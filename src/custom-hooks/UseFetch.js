@@ -8,7 +8,7 @@ export const useFetch = (url) => {
     const response = await fetch(url, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "a8c35d66fcmshafc301555f8d79dp1f965bjsn7862c2adff73",
+            "x-rapidapi-key": "4b64913a5amsh811f53bd560bb6dp1aa97djsnddd46be6cbc0",
             "x-rapidapi-host": "covid-193.p.rapidapi.com"
         }
     });
