@@ -7,6 +7,7 @@
 .flex {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .text-danger {
@@ -15,6 +16,12 @@
 
 .text-success {
   color: rgb(153, 230, 171);
+}
+
+.progressDiv {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 800px) {
