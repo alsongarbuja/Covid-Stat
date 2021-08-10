@@ -1,0 +1,13 @@
+
+.pocketDiv {
+    width: fit-content;
+    height: fit-content;
+    padding: 1em 2em;
+    margin: 1em;
+    box-shadow: 2px 4px 20px #e2e2e2;
+}
+
+.country-name {
+    font-weight: 600;
+    font-size: .75rem;
+}
