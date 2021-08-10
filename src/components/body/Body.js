@@ -2,9 +2,13 @@ import React, {useState, useEffect} from 'react'
 import { useFetch } from '../../custom-hooks/UseFetch'
 import './Body.css'
 import currentDate from '../../helper/Date'
+import { Button, CircularProgress } from '@material-ui/core'
+import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 
-const Body = ({ country }) => {
+const Body = () => {
     let formatedDate = currentDate()
+    const { country } = useParams()
 
     const { loading, responses } = useFetch(`https://covid-193.p.rapidapi.com/history?country=${country}&day=${formatedDate}`)
     const [data, setData] = useState([])
@@ -17,13 +21,17 @@ const Body = ({ country }) => {
         <main>
             {
                 loading 
-                    ? "Loading..." : 
+                    ? (
+                        <div className="progressDiv-small flex">
+                            <CircularProgress />
+                        </div>
+                    ) : 
                     data[0] !== undefined ? (
                     <>
                         <h1>{data[0].country}</h1>
                         <div className="info-holder flex">
                             <div className="total-holder">
-                                <h2>Total Population: {data[0].population}</h2>
+                                {/* <h2>Total Population: {data[0].population}</h2> */}
                                 <h2>Total Cases:   <span className="text-danger">{data[0].cases.total}</span></h2>
                                 <h2>Total Deaths:   <span className="text-danger">{data[0].deaths.total}</span></h2>
                                 <h2>Total Recovered:   <span className="text-success">{data[0].cases.recovered || "-"}</span></h2>
@@ -40,6 +48,9 @@ const Body = ({ country }) => {
                                 </div>
                             </div>
                         </div>
+                        <Button size="large">
+                            <Link to='/'>Back</Link>
+                        </Button>
                     </>
                 ) : "No Available Data for the country"
             }
