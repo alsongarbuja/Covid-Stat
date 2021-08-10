@@ -7,26 +7,11 @@ import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/picker
 // eslint-disable-next-line
 import DateFnsUtils from '@date-io/date-fns'
 
-const Header = ({ country, setCountry, countries, selectedDate, handleDateChange }) => {
+const Header = ({ selectedDate, handleDateChange }) => {
     return (
         <header>
             <span className="logo">Covid Stat</span><br/><br/>
             <div className="flex">
-                <TextField
-                    id="outlined-select-currency"
-                    select
-                    label="Select"
-                    value={country}
-                    onChange={e => setCountry(e.target.value)}
-                    helperText="Please select country"
-                    variant="outlined"
-                    >
-                    {countries.map((option) => (
-                        <MenuItem key={option} value={option}>
-                            {option}
-                        </MenuItem>
-                    ))}
-                </TextField>
                 {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <KeyboardDatePicker
                         disableToolbar
