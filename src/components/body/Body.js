@@ -5,6 +5,7 @@ import currentDate from '../../helper/Date'
 import { Button, CircularProgress } from '@material-ui/core'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
 
 const Body = () => {
     let formatedDate = currentDate()
@@ -48,9 +49,12 @@ const Body = () => {
                                 </div>
                             </div>
                         </div>
-                        <Button size="large">
-                            <Link to='/'>Back</Link>
-                        </Button>
+                        <Link to='/'> 
+                            <Button size="large">
+                                <ArrowBackIosTwoTone />
+                                Back
+                            </Button>
+                        </Link>
                     </>
                 ) : "No Available Data for the country"
             }

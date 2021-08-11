@@ -1,26 +1,28 @@
-import { Button } from '@material-ui/core'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, createRef } from 'react'
+import Country from './Country'
 import './MainBody.css'
 
-const MainBody = ({ data }) => {
+const MainBody = ({ data, searchedCountry }) => {
+
+    const [elRefs, setElRefs] = useState([])
+
+    useEffect(() => {
+        const refs = Array(data?.length).fill().map((_, i) => elRefs[i] || createRef())
+
+        setElRefs(refs)
+    // eslint-disable-next-line
+    }, [data])
 
     return (
         <div className="flex">
             {
                 data?.map((country, i) => (
-                    <div key={i} className="pocketDiv">
-                        <span className="country-name">{country.country}</span>
-                        <p className="text-danger">New cases: {country.cases.new || "0"}</p>
-                        <p className="text-danger">New Deaths: {country.deaths.new || "0"}</p>
-                        <p className="text-success">Recovered: {country.cases.recovered}</p>
-                        <Button variant="contained" color="primary" size="small">
-                            <Link 
-                                to={`/detail/${country.country}`} 
-                                style={{ color: '#fff', textDecoration: 'none' }}
-                            >More Info</Link>
-                        </Button>
-                    </div>
+                    <Country 
+                        key={i}
+                        country={country}
+                        selected={searchedCountry === country.country}
+                        refProp={elRefs[i]}
+                    />
                 ))
             }    
         </div>
