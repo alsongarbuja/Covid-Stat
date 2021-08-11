@@ -14,6 +14,7 @@ function App() {
 
   const [data, setData] = useState([])
   const [selectedDate, setSelectedDate] = useState(new Date('2021-08-04T12:11:54'))
+  const [searchedCountry, setSearchedCountry] = useState('')
 
   useEffect(() => {
       setData(responses.response)
@@ -26,6 +27,7 @@ function App() {
       <Header
         selectedDate={selectedDate}
         handleDateChange={setSelectedDate}
+        setSearchedCountry={setSearchedCountry}
       />
       {
         loading ? (
@@ -37,7 +39,7 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path="/">
-                  <MainBody data={data} />
+                  <MainBody data={data} searchedCountry={searchedCountry} />
                 </Route>
                 <Route path="/detail/:country">
                   <Container maxWidth="md">

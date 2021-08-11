@@ -1,32 +1,37 @@
 import 'date-fns'
 import './header.css'
-import React from 'react'
-import { MenuItem, TextField } from '@material-ui/core'
+import React, { useState }  from 'react'
+import { Button, TextField } from '@material-ui/core'
 // eslint-disable-next-line
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 // eslint-disable-next-line
 import DateFnsUtils from '@date-io/date-fns'
+import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
+// selectedDate, handleDateChange
+const Header = ({ setSearchedCountry }) => {
+    const [country, setCountry] = useState('')
 
-const Header = ({ selectedDate, handleDateChange }) => {
     return (
         <header>
             <span className="logo">Covid Stat</span><br/><br/>
             <div className="flex">
-                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        label="Date picker inline"
-                        value={selectedDate}
-                        onChange={e => handleDateChange(e.target.value)}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
+                <div>
+                    <TextField 
+                        label="Search Country" 
+                        variant="outlined"
+                        value={country}
+                        onChange={e => setCountry(e.target.value)}
                     />
-                </MuiPickersUtilsProvider> */}
+                    <Button 
+                        color="primary" 
+                        role="search" 
+                        variant="contained" 
+                        style={{ height:"100%", marginLeft: "1em" }}
+                        onClick={() => setSearchedCountry(country)}
+                    >
+                        <SearchTwoTone />
+                    </Button>
+                </div>
             </div>
         </header>
     )
