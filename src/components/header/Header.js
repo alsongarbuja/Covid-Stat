@@ -1,6 +1,7 @@
 import 'date-fns'
 import './header.css'
 import React, { useState }  from 'react'
+import { Link } from 'react-router-dom'
 import { Button, TextField } from '@material-ui/core'
 // eslint-disable-next-line
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
@@ -11,27 +12,30 @@ import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 const Header = ({ setSearchedCountry }) => {
     const [country, setCountry] = useState('')
 
+    const handleSearch = () => {
+        setSearchedCountry(country)
+        setCountry('')
+    }
+
     return (
-        <header>
-            <span className="logo">Covid Stat</span><br/><br/>
-            <div className="flex">
-                <div>
-                    <TextField 
-                        label="Search Country" 
-                        variant="outlined"
-                        value={country}
-                        onChange={e => setCountry(e.target.value)}
-                    />
-                    <Button 
-                        color="primary" 
-                        role="search" 
-                        variant="contained" 
-                        style={{ height:"100%", marginLeft: "1em" }}
-                        onClick={() => setSearchedCountry(country)}
-                    >
-                        <SearchTwoTone />
-                    </Button>
-                </div>
+        <header className="flex">
+            <Link to="/" className="logo">Covid Stat</Link>
+            <div>
+                <TextField 
+                    label="Search Country" 
+                    variant="outlined"
+                    value={country}
+                    onChange={e => setCountry(e.target.value)}
+                />
+                <Button 
+                    color="primary" 
+                    role="search" 
+                    variant="contained" 
+                    style={{ height:"90%", marginLeft: "1em" }}
+                    onClick={() => handleSearch()}
+                >
+                    <SearchTwoTone />
+                </Button>
             </div>
         </header>
     )

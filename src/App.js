@@ -23,35 +23,33 @@ function App() {
 
 
   return (
-    <div className="App"> 
-      <Header
-        selectedDate={selectedDate}
-        handleDateChange={setSelectedDate}
-        setSearchedCountry={setSearchedCountry}
-      />
-      {
-        loading ? (
-          <div className="progressDiv flex">
-            <CircularProgress />
-          </div>
-        ) : (
-          <>
-            <Router>
-              <Switch>
-                <Route exact path="/">
-                  <MainBody data={data} searchedCountry={searchedCountry} />
-                </Route>
-                <Route path="/detail/:country">
-                  <Container maxWidth="md">
-                    <Body />
-                  </Container>
-                </Route>
-              </Switch>
-            </Router>
-          </>
-        )
-      }
-    </div>
+    <Router>
+      <div className="App"> 
+        <Header
+          selectedDate={selectedDate}
+          handleDateChange={setSelectedDate}
+          setSearchedCountry={setSearchedCountry}
+        />
+        {
+          loading ? (
+            <div className="progressDiv flex">
+              <CircularProgress />
+            </div>
+          ) : (
+            <Switch>
+              <Route exact path="/">
+                <MainBody data={data} searchedCountry={searchedCountry} />
+              </Route>
+              <Route path="/detail/:country">
+                <Container maxWidth="md">
+                  <Body />
+                </Container>
+              </Route>
+            </Switch>
+          )
+        }
+      </div>
+    </Router>
   );
 }
 
