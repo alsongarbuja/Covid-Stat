@@ -2,6 +2,7 @@ import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import ArrowForwardOutlined from '@material-ui/icons/ArrowForwardOutlined'
+import { FavoriteRounded, SentimentDissatisfiedRounded, ShowChartRounded } from '@material-ui/icons'
 
 const Country = ({ country, selected, refProp }) => {
     
@@ -10,15 +11,34 @@ const Country = ({ country, selected, refProp }) => {
     return (
         <div className="pocketDiv">
             <span className="country-name">{country.country}</span>
-            <p className="text-danger">New cases: {country.cases.new || "0"}</p>
-            <p className="text-danger">New Deaths: {country.deaths.new || "0"}</p>
-            <p className="text-success">Recovered: {country.cases.recovered}</p>
+            <div className="flex stat-div">
+                <div className="text-danger">
+                    <p>
+                        <ShowChartRounded />
+                    </p>
+                    <p>{country.cases.new || "0"}</p>
+                </div>
+                <div className="text-danger">
+                    <p>
+                        <SentimentDissatisfiedRounded />
+                    </p>
+                    <p>{country.deaths.new || "0"}</p>
+                </div>
+                <div className="text-success">
+                    <p>
+                        <FavoriteRounded />
+                    </p>
+                    <p>
+                        {country.cases.recovered}
+                    </p>
+                </div>
+            </div>
             <Link 
                 to={`/detail/${country.country}`} 
                 style={{ color: '#fff', textDecoration: 'none' }}
             >
-                <Button variant="contained" color="primary" size="small">
-                    More Info
+                <Button variant="outlined" color="primary" size="small" style={{ borderRadius:"30px" }}>
+                    {/* More Info */}
                     <ArrowForwardOutlined fontSize="small"/>
                 </Button>
             </Link>

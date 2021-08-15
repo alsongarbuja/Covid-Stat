@@ -2,12 +2,23 @@
 .pocketDiv {
     width: fit-content;
     height: fit-content;
+    text-align: center;
     padding: 1em 2em;
     margin: 1em;
     box-shadow: 2px 4px 20px #e2e2e2;
+    border-radius: 10px;
+}
+
+.pocketDiv div {
+    margin: 1em 0;
 }
 
 .country-name {
     font-weight: 600;
     font-size: .75rem;
+    text-decoration: underline;
+}
+
+.stat-div div {
+    margin: 0 .75em;
 }

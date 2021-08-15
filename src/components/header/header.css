@@ -3,8 +3,14 @@ header {
     width: 100%;
     padding: 2em 0;
     text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 2;
 }
 
 .logo {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    text-decoration: none;
+    color: rgb(121, 67, 184);
 }
