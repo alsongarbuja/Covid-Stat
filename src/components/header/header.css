@@ -14,3 +14,20 @@ header {
     text-decoration: none;
     color: rgb(121, 67, 184);
 }
+
+.search-form {
+    position: absolute;
+    z-index: 2;
+    top: 30px;
+    right: 30px;
+    background-color: #fff;
+    transition: all 2s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    .search-form {
+        width: 100%;
+        right: 0;
+        transition: all 2s ease-in-out;
+    }
+}
