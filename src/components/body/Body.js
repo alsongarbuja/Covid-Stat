@@ -4,12 +4,13 @@ import './Body.css'
 import currentDate from '../../helper/Date'
 import { Button, CircularProgress } from '@material-ui/core'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
 
 const Body = () => {
     let formatedDate = currentDate()
     const { country } = useParams()
+    const history = useHistory()
 
     const { loading, responses } = useFetch(`https://covid-193.p.rapidapi.com/history?country=${country}&day=${formatedDate}`)
     const [data, setData] = useState([])
@@ -55,12 +56,10 @@ const Body = () => {
                             ) : <h2 style={{ textAlign:"center" }}>No Available Data for Today</h2>
                         }
                         <div style={{ textAlign:"right" }}>
-                            <Link to='/'> 
-                                <Button size="large">
-                                    <ArrowBackIosTwoTone />
-                                    Back
-                                </Button>
-                            </Link>
+                            <Button size="large" onClick={() => history.goBack()}>
+                                <ArrowBackIosTwoTone />
+                                Back
+                            </Button>
                         </div>
                     </>
                 ) 
