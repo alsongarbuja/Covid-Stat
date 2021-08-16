@@ -6,11 +6,20 @@ import { FavoriteRounded, SentimentDissatisfiedRounded, ShowChartRounded } from 
 
 const Country = ({ country, selected, refProp }) => {
     
-    if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+    if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "center" })
 
     return (
-        <div className="pocketDiv">
-            <span className="country-name">{country.country}</span>
+        <div className="pocketDiv" ref={refProp}>
+            <span 
+                className="country-name" 
+                style={{ 
+                    backgroundColor:selected ? "#87f" : "inherit", 
+                    color:selected ? "#fff" : "inherit",
+                    padding:selected ? ".5em 1em" : "0" 
+                }}
+            >
+                {country.country}
+            </span>
             <div className="flex stat-div">
                 <div className="text-danger">
                     <p>
