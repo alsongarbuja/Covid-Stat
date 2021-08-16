@@ -1,6 +1,7 @@
 import 'date-fns'
 import './header.css'
 import React, { useState }  from 'react'
+import { Route, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Button, TextField } from '@material-ui/core'
 // eslint-disable-next-line
@@ -19,23 +20,27 @@ const Header = ({ setSearchedCountry }) => {
 
     return (
         <header className="flex">
-            <Link to="/" className="logo">Covid Stat</Link>
+            <Link to="/" className="logo">Covid19 Around</Link>
             <div>
-                <TextField 
-                    label="Search Country" 
-                    variant="outlined"
-                    value={country}
-                    onChange={e => setCountry(e.target.value)}
-                />
-                <Button 
-                    color="primary" 
-                    role="search" 
-                    variant="contained" 
-                    style={{ height:"90%", marginLeft: "1em" }}
-                    onClick={() => handleSearch()}
-                >
-                    <SearchTwoTone />
-                </Button>
+                <Switch>
+                    <Route exact path="/">
+                        <TextField 
+                            label="Search Country" 
+                            variant="outlined"
+                            value={country}
+                            onChange={e => setCountry(e.target.value)}
+                        />
+                        <Button 
+                            color="primary" 
+                            role="search" 
+                            variant="contained" 
+                            style={{ height:"90%", marginLeft: "1em" }}
+                            onClick={() => handleSearch()}
+                        >
+                            <SearchTwoTone />
+                        </Button>
+                    </Route>
+                </Switch>
             </div>
         </header>
     )
