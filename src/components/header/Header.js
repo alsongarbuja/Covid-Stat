@@ -1,5 +1,4 @@
 import 'date-fns'
-import './header.css'
 import React, { useState, useRef }  from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -10,7 +9,8 @@ import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/picker
 import DateFnsUtils from '@date-io/date-fns'
 import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 import { Close } from '@material-ui/icons'
-// selectedDate, handleDateChange
+import { Logo, StyledHeader, StyledForm } from './Header.style'
+
 const Header = ({ setSearchedCountry }) => {
     const [country, setCountry] = useState('')
     const isDesktop = useMediaQuery('(min-width: 570px)')
@@ -26,11 +26,11 @@ const Header = ({ setSearchedCountry }) => {
     }
 
     return (
-        <header className="flex">
-            <Link to="/" className="logo">Covid19 Around</Link>
+        <StyledHeader className="flex">
+            <Link to="/" component={Logo}>Covid19 Around</Link>
             <Switch>
                 <Route exact path="/">
-                    <form ref={searchForm} onSubmit={handleSearch} className="search-form" style={{ display: isDesktop ? "block" : "none" }}>
+                    <StyledForm ref={searchForm} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
                         <TextField 
                             label="Search Country" 
                             variant="outlined"
@@ -59,7 +59,7 @@ const Header = ({ setSearchedCountry }) => {
                                 </IconButton>
                             )
                         }
-                    </form>
+                    </StyledForm>
                     {
                         !isDesktop && (
                             <IconButton 
@@ -73,7 +73,7 @@ const Header = ({ setSearchedCountry }) => {
                     }
                 </Route>
             </Switch>
-        </header>
+        </StyledHeader>
     )
 }
 

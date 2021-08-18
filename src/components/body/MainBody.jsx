@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createRef } from 'react'
 import Country from './Country'
-import './MainBody.css'
 
 const MainBody = ({ data, searchedCountry }) => {
 

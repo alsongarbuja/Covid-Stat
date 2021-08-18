@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import ArrowForwardOutlined from '@material-ui/icons/ArrowForwardOutlined'
 import { FavoriteRounded, SentimentDissatisfiedRounded, ShowChartRounded } from '@material-ui/icons'
+import { CountryDiv, CountryName, StatDiv } from './StyledComponents/MainBody.style'
 
 const Country = ({ country, selected, refProp }) => {
     
     if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "center" })
 
     return (
-        <div className="pocketDiv" ref={refProp}>
-            <span 
-                className="country-name" 
+        <CountryDiv ref={refProp}>
+            <CountryName 
                 style={{ 
                     backgroundColor:selected ? "#87f" : "inherit", 
                     color:selected ? "#fff" : "inherit",
@@ -19,8 +19,8 @@ const Country = ({ country, selected, refProp }) => {
                 }}
             >
                 {country.country}
-            </span>
-            <div className="flex stat-div">
+            </CountryName>
+            <StatDiv className="flex">
                 <div className="text-danger">
                     <p>
                         <ShowChartRounded />
@@ -41,7 +41,7 @@ const Country = ({ country, selected, refProp }) => {
                         {country.cases.recovered}
                     </p>
                 </div>
-            </div>
+            </StatDiv>
             <Link 
                 to={`/detail/${country.country}`} 
                 style={{ color: '#fff', textDecoration: 'none' }}
@@ -51,7 +51,7 @@ const Country = ({ country, selected, refProp }) => {
                     <ArrowForwardOutlined fontSize="small"/>
                 </Button>
             </Link>
-        </div>
+        </CountryDiv>
     )
 }
 
