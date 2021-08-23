@@ -1,7 +1,5 @@
 
-const currentDate = () => {
-    let date = new Date();
-
+const currentDate = date => {
     let month = date.getMonth();
     let year = date.getFullYear();
     let day = date.getDate();

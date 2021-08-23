@@ -8,7 +8,7 @@ import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
 import { StyledMain, InfoHolder, NewHolder, NewNumber, OuterCase, TotalHolder, ProgressDiv } from './StyledComponents/Body.style'
 
 const Body = () => {
-    let formatedDate = currentDate()
+    let formatedDate = currentDate(new Date())
     const { country } = useParams()
     const history = useHistory()
 
