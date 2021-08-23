@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Body from './components/body/Body';
 import MainBody from './components/body/MainBody';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Dashboard from './components/body/Dashboard/Dashbord';
 
 const URL = 'https://covid-193.p.rapidapi.com/statistics'
 
@@ -20,16 +21,18 @@ function App() {
       setData(responses.response)
   }, [responses])
 
-
-
   return (
     <Router>
       <div className="App"> 
-        <Header
-          selectedDate={selectedDate}
-          handleDateChange={setSelectedDate}
-          setSearchedCountry={setSearchedCountry}
-        />
+        {
+          window.location.pathname !== '/' ? (
+            <Header
+              selectedDate={selectedDate}
+              handleDateChange={setSelectedDate}
+              setSearchedCountry={setSearchedCountry}
+            />
+          ) : (<></>)
+        }
         {
           loading ? (
             <div className="progressDiv flex">
@@ -38,6 +41,9 @@ function App() {
           ) : (
             <Switch>
               <Route exact path="/">
+                <Dashboard />
+              </Route>
+              <Route exact path="/dashboard">
                 <MainBody data={data} searchedCountry={searchedCountry} />
               </Route>
               <Route path="/detail/:country">
