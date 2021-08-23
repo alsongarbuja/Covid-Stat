@@ -5,6 +5,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html, body {
+  height: 100%;
+  background-color: #F1F3FB;
+}
+
 .flex {
   display: flex;
   justify-content: space-around;
