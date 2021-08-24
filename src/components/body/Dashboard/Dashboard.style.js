@@ -34,11 +34,6 @@ export const ReportDiv = styled.div`
     box-shadow: 2px 2px 10px #e2e2e2;
 `
 
-export const Toolbar = styled.div`
-    height: 90px;
-    width: 100%;
-`
-
 export const SymptomDiv = styled.div`
     text-align: center;
     box-shadow: 2px 1px 5px #e2e2e2; 
