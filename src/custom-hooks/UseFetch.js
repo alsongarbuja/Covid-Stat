@@ -30,7 +30,7 @@ export const useFetchApi = (url) => {
   const getResponses = useCallback(async () => {
     const response = await fetch(url, {
         "method": "GET",
-        "mode": "cors",
+        "mode": "no-cors",
         "headers": {
             "X-Api-Key": process.env.REACT_APP_NEWS_API_KEY
         }
