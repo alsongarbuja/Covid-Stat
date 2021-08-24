@@ -20,12 +20,13 @@ export const Nav = styled.nav`
     }
 `
 
-export const Menus = styled.div`
+export const Menus = styled.a`
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1em;
     cursor: pointer;
+    text-decoration: none;
 
     @media screen and (min-width: 600px){
         padding: 2em 1em;
@@ -36,7 +37,7 @@ export const Logo = styled.span`
     display: none;
     text-align: center;
     padding: 2em 1em 3em 1em;
-    color: "#B8B2D3";
+    color: #B8B2D3;
 
     @media screen and (min-width: 600px){
         display: block;

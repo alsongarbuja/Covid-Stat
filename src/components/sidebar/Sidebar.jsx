@@ -1,6 +1,7 @@
 import { Dashboard, ShowChart, Settings, ThumbDownAlt, EcoTwoTone } from '@material-ui/icons'
 import React from 'react'
 import { Nav, Menus, Logo } from './Sidebar.style'
+import { NavLink } from 'react-router-dom'
 
 const Sidebar = () => {
     return (
@@ -10,22 +11,22 @@ const Sidebar = () => {
                     <EcoTwoTone /> <br />
                     Co19
                 </Logo>
-                <Menus style={{ color:"#fff" }}>
+                <NavLink to="/" component={Menus} style={{ color: window.location.pathname === '/' ? "#fff" : "#AAC5E1" }}>
                     <Dashboard />
                     <span className="menu-label">Dashboard</span>
-                </Menus>
-                <Menus>
+                </NavLink>
+                <NavLink to="/stats" component={Menus} style={{ color: window.location.pathname === '/stats' ? "#fff" : "#AAC5E1" }}>
                     <ShowChart />
                     <span className="menu-label">Stats</span>
-                </Menus>
-                <Menus>
+                </NavLink>
+                <NavLink to="/myths" component={Menus} style={{ color: window.location.pathname === '/myths' ? "#fff" : "#AAC5E1" }}>
                     <ThumbDownAlt />
                     <span className="menu-label">Myths</span>
-                </Menus>
-                <Menus>
+                </NavLink>
+                <NavLink to="/settings" component={Menus} style={{ color: window.location.pathname === '/settings' ? "#fff" : "#AAC5E1" }}>
                     <Settings />
                     <span className="menu-label">Settings</span>
-                </Menus>
+                </NavLink>
             </Nav>
         </div>
     )
