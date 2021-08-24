@@ -26,10 +26,10 @@ const Header = ({ setSearchedCountry }) => {
     }
 
     return (
-        <StyledHeader className="flex">
-            <Link to="/" component={Logo}>Covid19 Around</Link>
+        <StyledHeader>
+            <Link to="/" component={Logo}>Stats Around World</Link>
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/stats">
                     <StyledForm ref={searchForm} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
                         <TextField 
                             label="Search Country" 
