@@ -31,6 +31,7 @@ export const useFetchApi = (url) => {
     const response = await fetch(url, {
         "method": "GET",
         "headers": {
+            "mode": "cors",
             "X-Api-Key": process.env.REACT_APP_NEWS_API_KEY
         }
     });
