@@ -3,7 +3,7 @@ import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
 import { useFetchApi } from '../../../../custom-hooks/UseFetch'
  
 const News = () => {
-    const { loading, responses } = useFetchApi("https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=covid&sortBy=relevancy")
+    const { loading, responses } = useFetchApi("https://newsapi.org/v2/everything?q=covid&sortBy=relevancy")
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
