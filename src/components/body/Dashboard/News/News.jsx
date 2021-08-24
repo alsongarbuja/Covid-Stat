@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { NewsDiv, NewsHolder } from './News.styled'
+import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
 import { useFetchApi } from '../../../../custom-hooks/UseFetch'
-import { CircularProgress } from '@material-ui/core'
  
 const News = () => {
-    const { loading, responses } = useFetchApi("https://newsapi.org/v2/everything?q=covid")
+    const { loading, responses } = useFetchApi("https://newsapi.org/v2/everything?q=covid&sortBy=relevancy")
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
@@ -17,8 +16,10 @@ const News = () => {
             <hr />
             {
                 loading ? (
-                    <div style={{ width:"100%", padding:"1em 0", height:"100px", textAlign:"center" }}>
-                        <CircularProgress />
+                    <div style={{ width:"100%", padding:"1em 0", height:"300px", textAlign:"center" }}>
+                        {
+                            [...Array(3)].map((_, i) => (<><NewsHolderLoading key={i} /><br /></>))
+                        }
                     </div>
                 ) : news?.slice(0, 3).map((news, i) => (
                     <NewsHolder key={i}>

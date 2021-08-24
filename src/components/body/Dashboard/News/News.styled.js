@@ -10,3 +10,10 @@ export const NewsDiv = styled.div`
 export const NewsHolder = styled.div`
     padding: 1em 0;
 `
+
+export const NewsHolderLoading = styled.div`
+    width: 100%;
+    padding: 1em 0;
+    background-color: #e2e2e2;
+    height: 50px;
+`
