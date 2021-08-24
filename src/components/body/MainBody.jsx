@@ -1,9 +1,11 @@
 import React, { useState, useEffect, createRef } from 'react'
 import Country from './Country'
+import { CountryLoader } from './StyledComponents/MainBody.style'
 
-const MainBody = ({ data, searchedCountry }) => {
+const MainBody = ({ loading, data, searchedCountry }) => {
 
     const [elRefs, setElRefs] = useState([])
+    const n = 18
 
     useEffect(() => {
         const refs = Array(data?.length).fill().map((_, i) => elRefs[i] || createRef())
@@ -13,18 +15,31 @@ const MainBody = ({ data, searchedCountry }) => {
     }, [data])
 
     return (
-        <div className="flex">
+        <>
+            <div style={{ height:"120px" }} />
             {
-                data?.map((country, i) => (
-                    <Country 
-                        key={i}
-                        country={country}
-                        selected={searchedCountry === country.country}
-                        refProp={elRefs[i]}
-                    />
-                ))
-            }    
-        </div>
+                loading ? (
+                    <div className="flex">
+                        {
+                            [...Array(n)].map((_, i) => <CountryLoader key={i} />)
+                        }
+                    </div>
+                ) : (
+                    <div className="flex">
+                        {
+                            data?.map((country, i) => (
+                                <Country 
+                                    key={i}
+                                    country={country}
+                                    selected={searchedCountry === country.country}
+                                    refProp={elRefs[i]}
+                                />
+                            ))
+                        }    
+                    </div>
+                )
+            }
+        </>
     )
 }
 
