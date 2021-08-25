@@ -33,7 +33,7 @@ export const useFetchApi = (url) => {
         "method": "GET",
         "mode": "cors",
         "headers": {
-            "Access-Control-Allow-Origin": "https://covid19stat.tk",
+            // "Access-Control-Allow-Origin": "*",
             "X-Api-Key": process.env.REACT_APP_NEWS_API_KEY
         }
     });
