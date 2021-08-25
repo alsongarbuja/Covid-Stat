@@ -7,6 +7,8 @@ export const useFetch = (url) => {
   const getResponses = useCallback(async () => {
     const response = await fetch(url, {
         "method": "GET",
+        "mode": "cors",
+        "access-control-alllow-origin": "https://www.covid19stat.tk",
         "headers": {
             "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
             "x-rapidapi-host": "covid-193.p.rapidapi.com"
@@ -30,7 +32,8 @@ export const useFetchApi = (url) => {
   const getResponses = useCallback(async () => {
     const response = await fetch(url, {
         "method": "GET",
-        "mode": "no-cors",
+        "mode": "cors",
+        "access-control-allow-origin": "https://www.covid19stat.tk",
         "headers": {
             "X-Api-Key": process.env.REACT_APP_NEWS_API_KEY
         }
