@@ -32,8 +32,8 @@ export const useFetchApi = (url) => {
     const response = await fetch(url, {
         "method": "GET",
         "mode": "cors",
-        "Access-Control-Allow-Origin": "https://covid19stat.tk",
         "headers": {
+            "Access-Control-Allow-Origin": "https://covid19stat.tk",
             "X-Api-Key": process.env.REACT_APP_NEWS_API_KEY
         }
     });
