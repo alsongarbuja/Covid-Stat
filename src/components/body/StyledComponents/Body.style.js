@@ -13,6 +13,7 @@ export const StyledMain = styled.main`
 
 export const InfoHolder = styled.div`
     justify-content: space-between;
+    display: flex;
 
     & div {
         margin-top: 1em;
@@ -21,6 +22,7 @@ export const InfoHolder = styled.div`
 
 export const NewHolder = styled.div`
     padding: 1em 0;
+    display: flex;
 `
 
 export const OuterCase = styled.div`
@@ -53,4 +55,5 @@ export const ProgressDiv = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
+    display: flex;
 `

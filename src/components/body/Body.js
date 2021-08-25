@@ -24,7 +24,7 @@ const Body = () => {
             {
                 loading 
                     ? (
-                        <ProgressDiv className="flex">
+                        <ProgressDiv>
                             <CircularProgress />
                         </ProgressDiv>
                     ) : (
@@ -33,7 +33,7 @@ const Body = () => {
                             data[0] !== undefined ? (
                                 <>
                                     <h1>{data[0].country}</h1>
-                                    <InfoHolder className="flex">
+                                    <InfoHolder>
                                         <TotalHolder>
                                             {/* <h2>Total Population: {data[0].population}</h2> */}
                                             <h2>Total Cases:   <span className="text-danger">{data[0].cases.total}</span></h2>
@@ -41,7 +41,7 @@ const Body = () => {
                                             <h2>Total Recovered:   <span className="text-success">{data[0].cases.recovered || "-"}</span></h2>
                                             <h2>Total Tested:   <span className="text-success">{data[0].tests.total}</span></h2>
                                         </TotalHolder>
-                                        <NewHolder className="flex">
+                                        <NewHolder>
                                             <OuterCase>
                                                 <h3>New Cases</h3>
                                                 <NewNumber className="text-danger">{data[0].cases.new || 0}</NewNumber>

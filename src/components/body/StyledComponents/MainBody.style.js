@@ -8,7 +8,7 @@ export const CountryDiv = styled.div`
     margin: 1em .5em;
     /* box-shadow: 2px 4px 20px #e2e2e2; */
     border-radius: 10px;
-    background-color: #fff;
+    background-color: ${props => props.isDarkMode ? "#000" : "#fff"};
 
     & div {
         margin: 1em 0;
@@ -33,5 +33,5 @@ export const CountryLoader = styled.div`
     padding: 1em 2em;
     margin: 1em .5em;
     border-radius: 10px;
-    background-color: #e3e3e3;
+    background-color: ${props => props.isDarkMode ? "#212121" : "#e3e3e3"};
 `

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { MythDiv, MythLoader } from './Myths.style'
 
-const Myths = () => {
+const Myths = ({ isDarkMode }) => {
     const [loading, setLoading] = useState(true)
     const [myths, setMyths] = useState([])
 
@@ -24,10 +24,10 @@ const Myths = () => {
             <h2>Myths About Covid</h2>
             <div style={{ display:"flex", flexWrap:"wrap" }}>
                 {
-                    loading ? [...Array(4)].map((_, i) => <MythLoader key={i} />)
+                    loading ? [...Array(6)].map((_, i) => <MythLoader isDarkMode={isDarkMode} key={i} />)
                     : (
                         myths.data?.slice(25, 40).map((myth, i) => (
-                            <MythDiv key={i}>
+                            <MythDiv key={i} isDarkMode={isDarkMode}>
                                 <h3>{myth.myth}</h3>
                                 <br />
                                 <p>

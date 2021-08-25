@@ -2,7 +2,7 @@ import 'date-fns'
 import React, { useState, useRef }  from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { Button, IconButton, TextField, useMediaQuery } from '@material-ui/core'
+import { Button, IconButton, TextField, useMediaQuery, createTheme, ThemeProvider } from '@material-ui/core'
 // eslint-disable-next-line
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 // eslint-disable-next-line
@@ -11,7 +11,7 @@ import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 import { Close } from '@material-ui/icons'
 import { Logo, StyledHeader, StyledForm } from './Header.style'
 
-const Header = ({ setSearchedCountry }) => {
+const Header = ({ setSearchedCountry, isDarkMode }) => {
     const [country, setCountry] = useState('')
     const isDesktop = useMediaQuery('(min-width: 570px)')
     const searchForm = useRef()
@@ -25,18 +25,29 @@ const Header = ({ setSearchedCountry }) => {
         }
     }
 
+    const darkTheme = createTheme({
+        palette: {
+            primary: {
+                main: isDarkMode ? '#fff' : '#000',
+            },
+            type: isDarkMode ? "dark" : "light",
+        }
+    })
+
     return (
-        <StyledHeader>
+        <StyledHeader isDarkMode={isDarkMode}>
             <Link to="/" component={Logo}>Stats Around World</Link>
             <Switch>
                 <Route exact path="/stats">
-                    <StyledForm ref={searchForm} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
-                        <TextField 
-                            label="Search Country" 
-                            variant="outlined"
-                            value={country}
-                            onChange={e => setCountry(e.target.value)}
-                        />
+                    <StyledForm isDarkMode={isDarkMode} ref={searchForm} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
+                        <ThemeProvider theme={darkTheme}>
+                            <TextField 
+                                label="Search Country" 
+                                variant="outlined"
+                                value={country}
+                                onChange={e => setCountry(e.target.value)}
+                            />
+                        </ThemeProvider>
                         <Button 
                             color="primary" 
                             role="search" 

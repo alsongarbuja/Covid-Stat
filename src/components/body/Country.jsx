@@ -5,12 +5,12 @@ import ArrowForwardOutlined from '@material-ui/icons/ArrowForwardOutlined'
 import { FavoriteRounded, SentimentDissatisfiedRounded, ShowChartRounded } from '@material-ui/icons'
 import { CountryDiv, CountryName, StatDiv } from './StyledComponents/MainBody.style'
 
-const Country = ({ country, selected, refProp }) => {
+const Country = ({ country, selected, refProp, isDarkMode }) => {
     
     if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "center" })
 
     return (
-        <CountryDiv ref={refProp}>
+        <CountryDiv isDarkMode={isDarkMode} ref={refProp}>
             <CountryName 
                 style={{ 
                     backgroundColor:selected ? "#87f" : "inherit", 

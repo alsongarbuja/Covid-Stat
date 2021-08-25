@@ -2,7 +2,7 @@ import React, { useState, useEffect, createRef } from 'react'
 import Country from './Country'
 import { CountryLoader } from './StyledComponents/MainBody.style'
 
-const MainBody = ({ loading, data, searchedCountry }) => {
+const MainBody = ({ loading, data, searchedCountry, isDarkMode }) => {
 
     const [elRefs, setElRefs] = useState([])
     const n = 18
@@ -21,7 +21,7 @@ const MainBody = ({ loading, data, searchedCountry }) => {
                 loading ? (
                     <div className="flex">
                         {
-                            [...Array(n)].map((_, i) => <CountryLoader key={i} />)
+                            [...Array(n)].map((_, i) => <CountryLoader isDarkMode={isDarkMode} key={i} />)
                         }
                     </div>
                 ) : (
@@ -33,6 +33,7 @@ const MainBody = ({ loading, data, searchedCountry }) => {
                                     country={country}
                                     selected={searchedCountry === country.country}
                                     refProp={elRefs[i]}
+                                    isDarkMode={isDarkMode}
                                 />
                             ))
                         }    

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
 import { useFetchApi } from '../../../../custom-hooks/UseFetch'
  
-const News = () => {
+const News = ({ isDarkMode }) => {
     const { loading, responses } = useFetchApi("https://newsapi.org/v2/everything?q=covid&sortBy=relevancy")
     const [ news, setNews ] = useState([])
 
@@ -11,7 +11,7 @@ const News = () => {
     }, [responses])
 
     return (
-        <NewsDiv>
+        <NewsDiv isDarkMode={isDarkMode}>
             <h2>Latest News</h2>
             <hr />
             {
@@ -31,7 +31,7 @@ const News = () => {
                             WebkitBoxOrient: "vertical",
                             }}
                         >
-                            <a href={news.url} rel="noreferrer" target="_blank" style={{ color:"#000" }}>{news.title}</a>
+                            <a href={news.url} rel="noreferrer" target="_blank" style={{ color: isDarkMode ? "#e2e2e2" : "#000", }}>{news.title}</a>
                         </h4>
                         <p style={{ 
                             overflow: "hidden", 

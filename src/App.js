@@ -12,7 +12,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import Myths from './components/Myths/Myths';
 import Settings from './components/Settings/Settings';
 
-import { Toolbar, Wrapper } from './App.style'
+import { Toolbar, Wrapper, MainBodyDiv } from './App.style'
 import { useMediaQuery } from '@material-ui/core';
 
 const URL = 'https://covid-193.p.rapidapi.com/statistics'
@@ -21,7 +21,10 @@ function App() {
   const { loading, responses } = useFetch(URL)
   const isMobile = useMediaQuery('(max-width: 600px)')
 
+  let darkMode = localStorage.getItem('darkModeOn') === undefined || localStorage.getItem('darkModeOn') === "false" ? false : true
+
   const [data, setData] = useState([])
+  const [isDarkMode, setIsDarkMode] = useState(darkMode)
   const [searchedCountry, setSearchedCountry] = useState('')
 
   useEffect(() => {
@@ -30,19 +33,19 @@ function App() {
 
   return (
     <Router>
-      <div style={{ display:"flex", height:"100%", width:"100%" }}> 
-        <Sidebar />
+      <MainBodyDiv isDarkMode={isDarkMode}> 
+        <Sidebar isDarkMode={isDarkMode}/>
         <Switch>
           <Route exact path="/">
             <Wrapper>
-              <Dashboard />
+              <Dashboard isDarkMode={isDarkMode}/>
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
           <Route exact path="/stats">
             <Wrapper>
-              <Header setSearchedCountry={setSearchedCountry} />
-              <MainBody loading={loading} data={data} searchedCountry={searchedCountry} />
+              <Header isDarkMode={isDarkMode} setSearchedCountry={setSearchedCountry} />
+              <MainBody isDarkMode={isDarkMode} loading={loading} data={data} searchedCountry={searchedCountry} />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
@@ -59,12 +62,12 @@ function App() {
           </Route>
           <Route>
             <Wrapper>
-              <Settings />
+              <Settings isDarkMode={isDarkMode} setDarkMode={setIsDarkMode} />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
         </Switch>
-      </div>
+      </MainBodyDiv>
     </Router>
   );
 }
