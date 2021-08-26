@@ -4,6 +4,7 @@ import { InfoHolder, ReportDiv, SymptomDiv } from './Dashboard.style'
 
 import { Grid, useMediaQuery } from '@material-ui/core'
 import { ArrowForward, ScatterPlot } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
 import News from './News/News'
 import Chart from './Report/Report'
@@ -25,7 +26,7 @@ const Dashbord = ({ isDarkMode }) => {
             <Grid item xl={6} md={9} xs={12}>
                 <h1 style={{ paddingLeft:".75em" }}>DashBoard({loading ? "" : data[0].country})</h1>
                 <div style={{ display:"flex", flexWrap:"wrap", marginBottom:"1em"}}>
-                    <InfoHolder isDarkMode={isDarkMode} style={{ backgroundColor:"#ff6a0dcc" }}>
+                    <InfoHolder isDarkMode={isDarkMode} style={{ backgroundColor:"#e6600ecc" }}>
                         <h3>New cases</h3>
                         <p>{loading ? "-" : data[0].cases.new}</p>
                     </InfoHolder>
@@ -37,7 +38,7 @@ const Dashbord = ({ isDarkMode }) => {
                         <h3>New Deaths</h3>
                         <p>{loading ? "-" : data[0].deaths.new}</p>
                     </InfoHolder>
-                    <InfoHolder isDarkMode={isDarkMode} style={{ backgroundColor:"#8cf827d8" }}>
+                    <InfoHolder isDarkMode={isDarkMode} style={{ backgroundColor:"#60bd08fa" }}>
                         <h3>Recovered</h3>
                         <p>{loading ? "-" : data[0].cases.recovered}</p>
                     </InfoHolder>
@@ -54,9 +55,11 @@ const Dashbord = ({ isDarkMode }) => {
                 <SymptomDiv isDarkMode={isDarkMode}>
                     <ScatterPlot style={{ fontSize:"5rem" }}/>
                     <h3>Infos</h3>
-                    <p style={{ textAlign:"left" }}>
+                    <p style={{ textAlign:"left", display:"flex", alignItems:"center" }}>
                         Read about the symptoms, preventions, and many more
-                        <ArrowForward />
+                        <Link to="/info">
+                            <ArrowForward style={{ color:"#fff" }}/>
+                        </Link>
                     </p>
                 </SymptomDiv>
             </Grid>

@@ -18,7 +18,7 @@ const Settings = ({ isDarkMode, setDarkMode }) => {
                         <SettingTitle>Prefrences</SettingTitle>
                         <SettingHolder>
                             <p>
-                                App Theme<br />
+                                <b>App Theme</b><br />
                                 <SettingSubHeader isDarkMode={isDarkMode}>Set the theme of the app</SettingSubHeader>
                             </p>
                             <span style={{ cursor:"pointer" }} onClick={darkMode}>
@@ -32,17 +32,17 @@ const Settings = ({ isDarkMode, setDarkMode }) => {
                         <SettingTitle>System</SettingTitle>
                         <SettingHolder>
                             <p>
-                                Main Location<br />
+                                <b>Main Location</b><br />
                                 <SettingSubHeader isDarkMode={isDarkMode}>Set main location for the dashboard</SettingSubHeader>
                             </p>
                             <b>Nepal</b>
                         </SettingHolder>
                         <div style={{ borderBottom:"1px solid #000", padding:"2em 0 1em 0", alignItems:"center", display:"flex", justifyContent:"space-between", width:"100%" }}>
                             <p>
-                                News Sort<br />
-                                <SettingSubHeader isDarkMode={isDarkMode}>Get the news according to your prefrence</SettingSubHeader>
+                                <b>News Language</b><br />
+                                <SettingSubHeader isDarkMode={isDarkMode}>Get the news in your prefered language</SettingSubHeader>
                             </p>
-                            <b>Relavency</b>
+                            <b>English</b>
                         </div>
                     </SettingWrapper>
                 </Grid>
