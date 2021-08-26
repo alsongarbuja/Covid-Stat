@@ -3,11 +3,11 @@ import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
 import { useFetchApi } from '../../../../custom-hooks/UseFetch'
  
 const News = ({ isDarkMode }) => {
-    const { loading, responses } = useFetchApi("https://newsapi.org/v2/everything?q=covid&sortBy=relevancy")
+    const { loading, responses } = useFetchApi(`http://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_MEDIASTACK_NEWS_API_KEY}&languages=en&keywords=covid&limit=3`)
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
-        setNews(responses.articles)
+        setNews(responses.data)
     }, [responses])
 
     return (
@@ -21,7 +21,7 @@ const News = ({ isDarkMode }) => {
                             [...Array(3)].map((_, i) => (<><NewsHolderLoading key={i} /><br /></>))
                         }
                     </div>
-                ) : news?.slice(0, 3).map((news, i) => (
+                ) : news?.map((news, i) => (
                     <NewsHolder key={i}>
                         <h4 style={{ 
                             overflow: "hidden", 

@@ -29,14 +29,7 @@ export const useFetchApi = (url) => {
   const [responses, setResponses] = useState([]);
 
   const getResponses = useCallback(async () => {
-    const response = await fetch(url, {
-        "method": "GET",
-        "mode": "cors",
-        "headers": {
-            // "Access-Control-Allow-Origin": "*",
-            "X-Api-Key": process.env.REACT_APP_NEWS_API_KEY
-        }
-    });
+    const response = await fetch(url);
     const responses = await response.json();
     setResponses(responses);
     setLoading(false);
