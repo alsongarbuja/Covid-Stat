@@ -14,6 +14,7 @@ import Settings from './components/Settings/Settings';
 
 import { Toolbar, Wrapper, MainBodyDiv } from './App.style'
 import { useMediaQuery } from '@material-ui/core';
+import Info from './components/body/Info/Info';
 
 const URL = 'https://covid-193.p.rapidapi.com/statistics'
 
@@ -39,6 +40,12 @@ function App() {
           <Route exact path="/">
             <Wrapper>
               <Dashboard isDarkMode={isDarkMode}/>
+              {isMobile ? <Toolbar /> : <></>}
+            </Wrapper>
+          </Route>
+          <Route exact path="/info">
+            <Wrapper>
+              <Info />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
