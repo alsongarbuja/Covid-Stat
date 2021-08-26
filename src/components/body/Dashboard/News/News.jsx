@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
-import { useFetchApi } from '../../../../custom-hooks/UseFetch'
+import { useFetch } from '../../../../custom-hooks/UseFetch'
  
 const News = ({ isDarkMode }) => {
-    const { loading, responses } = useFetchApi(`http://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_MEDIASTACK_NEWS_API_KEY}&languages=en&keywords=covid&limit=3`)
+    const { loading, responses } = useFetch(`https://free-news.p.rapidapi.com/v1/search?q=covid&lang=en&page_size=3`, "free-news.p.rapidapi.com")
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
-        setNews(responses.data)
+        setNews(responses.articles)
     }, [responses])
 
     return (
@@ -31,7 +31,7 @@ const News = ({ isDarkMode }) => {
                             WebkitBoxOrient: "vertical",
                             }}
                         >
-                            <a href={news.url} rel="noreferrer" target="_blank" style={{ color: isDarkMode ? "#e2e2e2" : "#000", }}>{news.title}</a>
+                            <a href={news.link} rel="noreferrer" target="_blank" style={{ color: isDarkMode ? "#e2e2e2" : "#000", }}>{news.title}</a>
                         </h4>
                         <p style={{ 
                             overflow: "hidden", 
@@ -39,7 +39,7 @@ const News = ({ isDarkMode }) => {
                             display: "-webkit-box",
                             WebkitLineClamp: "2",
                             WebkitBoxOrient: "vertical", 
-                            }}>{news.description}</p>
+                            }}>{news.summary || <a href={news.link} rel="noreferrer" target="_blank">Video Source</a>}</p>
                     </NewsHolder>
                 ))
             }
