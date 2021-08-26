@@ -1,8 +1,8 @@
 import React, { useState, useEffect, createRef } from 'react'
 import Country from './Country'
-import { CountryLoader } from './StyledComponents/MainBody.style'
+import { CountryLoader } from './Stats.style'
 
-const MainBody = ({ loading, data, searchedCountry, isDarkMode }) => {
+const Stats = ({ loading, data, searchedCountry, isDarkMode }) => {
 
     const [elRefs, setElRefs] = useState([])
     const n = 18
@@ -44,4 +44,4 @@ const MainBody = ({ loading, data, searchedCountry, isDarkMode }) => {
     )
 }
 
-export default MainBody
+export default Stats

@@ -1,9 +1,9 @@
-import { AirlineSeatFlat, SentimentVeryDissatisfied, VoiceOverOff, ArrowBack } from '@material-ui/icons'
 import React from 'react'
+
+import { HandWashSvg, StayHome, SocialDistance } from './Svgs'
+
+import { AirlineSeatFlat, SentimentVeryDissatisfied, VoiceOverOff, ArrowBack } from '@material-ui/icons'
 import { InfoMainWrapper, InfoSingleHolder, LinkBack } from './Info.style'
-import HandWashSvg from './Svgs/HandWashSvg'
-import SocialDistance from './Svgs/SocialDistance'
-import StayHome from './Svgs/StayHome'
 
 import { Link } from 'react-router-dom'
 

@@ -1,9 +1,12 @@
-import { Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
 import React from 'react'
+
+import { Link } from 'react-router-dom'
+
+import { Button } from '@material-ui/core'
 import ArrowForwardOutlined from '@material-ui/icons/ArrowForwardOutlined'
 import { FavoriteRounded, SentimentDissatisfiedRounded, ShowChartRounded } from '@material-ui/icons'
-import { CountryDiv, CountryName, StatDiv } from './StyledComponents/MainBody.style'
+
+import { CountryDiv, CountryName, StatDiv } from './Stats.style'
 
 const Country = ({ country, selected, refProp, isDarkMode }) => {
     

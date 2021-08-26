@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import { useFetch } from '../../custom-hooks/UseFetch'
-import currentDate from '../../helper/Date'
-import { Button, CircularProgress } from '@material-ui/core'
+import { useFetch } from '../../../../custom-hooks/UseFetch'
+import currentDate from '../../../../helper/Date'
+
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
-import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
-import { StyledMain, InfoHolder, NewHolder, NewNumber, OuterCase, TotalHolder, ProgressDiv } from './StyledComponents/Body.style'
 
-const Body = () => {
+import { Button, CircularProgress } from '@material-ui/core'
+import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
+import { StyledMain, InfoHolder, NewHolder, NewNumber, OuterCase, TotalHolder, ProgressDiv } from './Details.style'
+
+const Details = () => {
     let formatedDate = currentDate(new Date())
     const { country } = useParams()
     const history = useHistory()
@@ -68,4 +70,4 @@ const Body = () => {
     )
 }
 
-export default Body
+export default Details
