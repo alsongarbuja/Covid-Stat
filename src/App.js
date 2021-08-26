@@ -56,7 +56,7 @@ function App() {
           </Route>
           <Route exact path="/myths">
             <Wrapper>
-              <Myths />
+              <Myths isDarkMode={isDarkMode} />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
