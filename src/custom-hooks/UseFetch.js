@@ -16,7 +16,7 @@ export const useFetch = (url, host) => {
     const responses = await response.json();
     setResponses(responses);
     setLoading(false);
-  }, [url]);
+  }, [url, host]);
 
   useEffect(() => {
     getResponses();
