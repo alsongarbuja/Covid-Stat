@@ -12,7 +12,7 @@ import { useFetch } from '../../../custom-hooks/UseFetch'
 
 const Dashbord = ({ isDarkMode }) => {
     const isMobile = useMediaQuery('(max-width: 600px)')
-    const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/statistics?country=Nepal')
+    const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/statistics?country=Nepal', "covid-193.p.rapidapi.com")
 
     const [data, setData] = useState([])
 

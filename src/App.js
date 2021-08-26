@@ -18,7 +18,7 @@ import { useMediaQuery } from '@material-ui/core';
 const URL = 'https://covid-193.p.rapidapi.com/statistics'
 
 function App() {
-  const { loading, responses } = useFetch(URL)
+  const { loading, responses } = useFetch(URL, "covid-193.p.rapidapi.com")
   const isMobile = useMediaQuery('(max-width: 600px)')
 
   let darkMode = localStorage.getItem('darkModeOn') === undefined || localStorage.getItem('darkModeOn') === "false" ? false : true
