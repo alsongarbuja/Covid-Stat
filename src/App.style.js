@@ -7,10 +7,11 @@ export const Toolbar = styled.div`
 
 export const Wrapper = styled.div`
     width: 100%; 
-    height: 100vh; 
+    height: 100%; 
     overflow-y: visible;
 
     @media screen and (min-width: 600px){
+        height: 100vh;
         overflow-y: scroll;
     }
 `
