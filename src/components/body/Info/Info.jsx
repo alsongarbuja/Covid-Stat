@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { HandWashSvg, StayHome, SocialDistance } from './Svgs'
 
@@ -8,6 +8,11 @@ import { InfoMainWrapper, InfoSingleHolder, LinkBack } from './Info.style'
 import { Link } from 'react-router-dom'
 
 const Info = () => {
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
+
     return (
         <div style={{ padding:"1.5em 2em" }}>
             <Link to="/" component={LinkBack}>

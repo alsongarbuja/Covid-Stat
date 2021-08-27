@@ -21,7 +21,7 @@ export const LinkBack = styled.a`
     box-shadow: 2px 3px 10px #212121;
     text-decoration: none;
     position: fixed;
-    top: 20px;
+    top: 70px;
     right: 30px;
     display: flex;
     align-items: center;
