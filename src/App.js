@@ -62,7 +62,7 @@ function App() {
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
-          <Route>
+          <Route exact path="/settings">
             <Wrapper>
               <Settings isDarkMode={isDarkMode} setDarkMode={setIsDarkMode} />
               {isMobile ? <Toolbar /> : <></>}
