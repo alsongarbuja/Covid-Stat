@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="" alt="logo" />
+  <img src="https://github.com/Alson33/Covid-Stat/blob/master/public/assets/co-icon-big.png" width="200" alt="logo" />
 </p>
 
 <p align="center">
