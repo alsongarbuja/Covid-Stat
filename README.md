@@ -1,4 +1,6 @@
-<h1 align="center" style="border-bottom:none;">Covid19-Stat</h1>
+<p align="center">
+  <img src="" alt="logo" />
+</p>
 
 <p align="center">
   <a href="https://app.netlify.com/sites/covid19-around/deploys">
