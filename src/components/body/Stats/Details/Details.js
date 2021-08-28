@@ -10,11 +10,11 @@ import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
 import { StyledMain, InfoHolder, NewHolder, NewNumber, OuterCase, TotalHolder, ProgressDiv } from './Details.style'
 
 const Details = () => {
-    let formatedDate = currentDate(new Date())
+    const formatedDate = currentDate(new Date())
     const { country } = useParams()
     const history = useHistory()
 
-    const { loading, responses } = useFetch(`https://covid-193.p.rapidapi.com/history?country=${country}&day=${formatedDate}`)
+    const { loading, responses } = useFetch(`https://covid-193.p.rapidapi.com/history?country=${country}&day=${formatedDate}`, "covid-193.p.rapidapi.com")
     const [data, setData] = useState([])
 
     useEffect(() => {
