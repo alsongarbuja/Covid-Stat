@@ -1,7 +1,6 @@
 import './App.css';
 import { Container } from '@material-ui/core';
 import Header from './components/header/Header';
-import { useFetch } from './custom-hooks/UseFetch';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -11,21 +10,25 @@ import Sidebar from './components/sidebar/Sidebar';
 import { Toolbar, Wrapper, MainBodyDiv } from './App.style'
 import { useMediaQuery } from '@material-ui/core';
 
-const URL = 'https://covid-193.p.rapidapi.com/statistics'
-
 function App() {
-  const { loading, responses } = useFetch(URL, "covid-193.p.rapidapi.com")
   const isMobile = useMediaQuery('(max-width: 600px)')
 
-  let darkMode = localStorage.getItem('darkModeOn') === undefined || localStorage.getItem('darkModeOn') === "false" ? false : true
-
-  const [data, setData] = useState([])
-  const [isDarkMode, setIsDarkMode] = useState(darkMode)
+  const [isDarkMode, setIsDarkMode] = useState(false)
   const [searchedCountry, setSearchedCountry] = useState('')
+  const [language, setLanguage] = useState('')
 
   useEffect(() => {
-      setData(responses.response)
-  }, [responses])
+    if(localStorage.getItem('darkModeOn') === undefined)
+      localStorage.setItem('darkModeOn', 'false')
+
+    if(localStorage.getItem('language') === undefined)
+      localStorage.setItem('language', 'en')
+
+    const darkMode = localStorage.getItem('darkModeOn') === 'false' ? false : true
+    const lang = localStorage.getItem('language')
+    setIsDarkMode(darkMode)
+    setLanguage(lang)
+  }, [])
 
   return (
     <Router>
@@ -34,7 +37,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Wrapper>
-              <Dashboard isDarkMode={isDarkMode}/>
+              <Dashboard isDarkMode={isDarkMode} language={language}/>
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
@@ -47,7 +50,7 @@ function App() {
           <Route exact path="/stats">
             <Wrapper>
               <Header isDarkMode={isDarkMode} setSearchedCountry={setSearchedCountry} />
-              <Stats isDarkMode={isDarkMode} loading={loading} data={data} searchedCountry={searchedCountry} />
+              <Stats isDarkMode={isDarkMode} searchedCountry={searchedCountry} />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
@@ -64,7 +67,7 @@ function App() {
           </Route>
           <Route exact path="/settings">
             <Wrapper>
-              <Settings isDarkMode={isDarkMode} setDarkMode={setIsDarkMode} />
+              <Settings isDarkMode={isDarkMode} setDarkMode={setIsDarkMode} language={language} setLanguage={setLanguage} />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>

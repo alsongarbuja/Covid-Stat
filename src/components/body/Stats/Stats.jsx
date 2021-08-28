@@ -2,10 +2,17 @@ import React, { useState, useEffect, createRef } from 'react'
 import Country from './Country'
 import { CountryLoader } from './Stats.style'
 
-const Stats = ({ loading, data, searchedCountry, isDarkMode }) => {
+import { useFetch } from '../../../custom-hooks/UseFetch'
 
+const Stats = ({ searchedCountry, isDarkMode }) => {
+    const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/statistics', "covid-193.p.rapidapi.com")
+
+    const [data, setData] = useState([])
     const [elRefs, setElRefs] = useState([])
-    const n = 18
+
+    useEffect(() => {
+        setData(responses.response)
+      }, [responses])
 
     useEffect(() => {
         const refs = Array(data?.length).fill().map((_, i) => elRefs[i] || createRef())
@@ -21,7 +28,7 @@ const Stats = ({ loading, data, searchedCountry, isDarkMode }) => {
                 loading ? (
                     <div className="flex">
                         {
-                            [...Array(n)].map((_, i) => <CountryLoader isDarkMode={isDarkMode} key={i} />)
+                            [...Array(18)].map((_, i) => <CountryLoader isDarkMode={isDarkMode} key={i} />)
                         }
                     </div>
                 ) : (

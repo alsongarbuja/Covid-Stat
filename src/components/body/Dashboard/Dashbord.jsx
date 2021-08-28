@@ -11,7 +11,7 @@ import Chart from './Report/Report'
 
 import { useFetch } from '../../../custom-hooks/UseFetch'
 
-const Dashbord = ({ isDarkMode }) => {
+const Dashbord = ({ isDarkMode, language }) => {
     const isMobile = useMediaQuery('(max-width: 600px)')
     const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/statistics?country=Nepal', "covid-193.p.rapidapi.com")
 
@@ -51,7 +51,7 @@ const Dashbord = ({ isDarkMode }) => {
                 </div>
             </Grid>
             <Grid item xl={6} md={3} xs={12} style={{ padding: isMobile ? "1em" : "4em 2em 0 0" }}>
-                <News isDarkMode={isDarkMode}/>
+                <News isDarkMode={isDarkMode} language={language}/>
                 <SymptomDiv isDarkMode={isDarkMode}>
                     <ScatterPlot style={{ fontSize:"5rem" }}/>
                     <h3>Infos</h3>

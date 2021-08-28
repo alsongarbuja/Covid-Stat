@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
 import { useFetch } from '../../../../custom-hooks/UseFetch'
  
-const News = ({ isDarkMode }) => {
-    const { loading, responses } = useFetch(`https://free-news.p.rapidapi.com/v1/search?q=covid&lang=en&page_size=3`, "free-news.p.rapidapi.com")
+const News = ({ isDarkMode, language }) => {
+    const { loading, responses } = useFetch(`https://free-news.p.rapidapi.com/v1/search?q=covid&lang=${language}&page_size=3`, "free-news.p.rapidapi.com")
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
