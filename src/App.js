@@ -15,19 +15,25 @@ function App() {
 
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [searchedCountry, setSearchedCountry] = useState('')
-  const [language, setLanguage] = useState('')
+  const [language, setLanguage] = useState('en')
+  const [selectedCountry, setSelectedCountry] = useState('')
 
   useEffect(() => {
-    if(localStorage.getItem('darkModeOn') === undefined)
+    if(localStorage.getItem('darkModeOn') === null)
       localStorage.setItem('darkModeOn', 'false')
 
-    if(localStorage.getItem('language') === undefined)
+    if(localStorage.getItem('language') === null)
       localStorage.setItem('language', 'en')
+
+    if(localStorage.getItem('country') === null)
+      localStorage.setItem('country', 'Nepal')
 
     const darkMode = localStorage.getItem('darkModeOn') === 'false' ? false : true
     const lang = localStorage.getItem('language')
+    const selectCountry = localStorage.getItem('country')
     setIsDarkMode(darkMode)
     setLanguage(lang)
+    setSelectedCountry(selectCountry)
   }, [])
 
   return (
@@ -37,7 +43,11 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Wrapper>
-              <Dashboard isDarkMode={isDarkMode} language={language}/>
+              <Dashboard 
+                isDarkMode={isDarkMode} 
+                language={language}
+                isMobile={isMobile}
+              />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
@@ -67,7 +77,14 @@ function App() {
           </Route>
           <Route exact path="/settings">
             <Wrapper>
-              <Settings isDarkMode={isDarkMode} setDarkMode={setIsDarkMode} language={language} setLanguage={setLanguage} />
+              <Settings 
+                isDarkMode={isDarkMode} 
+                setDarkMode={setIsDarkMode} 
+                language={language} 
+                setLanguage={setLanguage} 
+                selectedCountry={selectedCountry}
+                setSelectedCountry={setSearchedCountry}
+              />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
