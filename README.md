@@ -33,10 +33,31 @@ Check the website here [covid19stat.tk](https://covid19-around.netlify.app)
 4. Navigate to [https://localhost:3000](https://localhost:3000)
 <br /><br />
 
+## 💎 Features
+
+Covid19Stat is full of features useful for having the leastest and most important information about covid-19 around the globe.
+
+1. __Latest Stats__: Using the [coivd19 rapid api](https://rapidapi.com/api-sports/api/covid-193/) you get the latest and upto date stats from any country
+2. __Weekly Report__: A Weekly breakdown of the month that updates daliy to compare the covid flow rate
+3. __News__: Get latest news from the [rapid api news](https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news/) related to covid in more than 20 languages
+4. __Dark Mode and Mobile Responsive__: With the darkMode and mobile responsive design you can check the website from any device with ease
+5. __PWA__: With [PWA](https://web.dev/progressive-web-apps/) enabled you can install the website as a native app in your device and find it quickly next time 
+<br /><br />
+
 ## 🔥 Contribute
 
 1. Give a star ⭐ to the project
 2. Create pull requests 👍
+3. Add issues and 🐛 bug reports 
+<br /><br />
+
+## 📖 Libraries and Third party sources
+
+1. [rapid Api](https://rapidapi.com/)
+1. [rechart](https://recharts.org/en-US/)
+2. [material ui](https://material-ui.com/)
+3. [styled components](https://styled-components.com/)
+4. [undraw illustration](https://undraw.co/illustrations)
 <br /><br /><br />
 
-<h1 align="center">Stay safe, Stay healthy 😊</h1>
+<p align="center">Stay Safe, Stay healthy 😊</h1>
