@@ -1,17 +1,30 @@
+import React, { useState, useEffect } from 'react'
+
 import { Grid, Select, MenuItem, InputBase, withStyles } from '@material-ui/core'
 import { EcoTwoTone, NightsStayOutlined, WbSunnyOutlined } from '@material-ui/icons'
-import React from 'react'
-import { langs } from '../../../data/lang'
 
+import { langs } from '../../../data/lang'
+import { useFetch } from '../../../custom-hooks/UseFetch'
 import { SettingWrapper, SettingHolder, SettingTitle, SettingSubHeader } from './Settings.style'
 
-const Settings = ({ isDarkMode, setDarkMode, language, setLanguage }) => {
+const Settings = ({ 
+    isDarkMode, 
+    setDarkMode, 
+    language, 
+    setLanguage, 
+    selectedCountry, 
+    setSelectedCountry
+}) => {
+
+    const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/countries', "covid-193.p.rapidapi.com")
+
+    const [countries, setCountries] = useState([])
+
+    useEffect(() => {
+        setCountries(responses.response)
+    }, [responses])
+    
     const BootstrapInput = withStyles((theme) => ({
-        root: {
-          'label + &': {
-            marginTop: theme.spacing(3),
-          },
-        },
         input: {
           borderRadius: 4,
           position: 'relative',
@@ -49,6 +62,10 @@ const Settings = ({ isDarkMode, setDarkMode, language, setLanguage }) => {
         localStorage.setItem('language', e.target.value)
         setLanguage(e.target.value)
     }
+    const handleCountry = e => {
+        localStorage.setItem('country', e.target.value)
+        setSelectedCountry(e.target.value)
+    }
 
     return (
         <div style={{ padding:"1em 2em" }}>
@@ -76,7 +93,17 @@ const Settings = ({ isDarkMode, setDarkMode, language, setLanguage }) => {
                                 <b>Main Location</b><br />
                                 <SettingSubHeader isDarkMode={isDarkMode}>Set main location for the dashboard</SettingSubHeader>
                             </p>
-                            <b>Nepal</b>
+                            <Select
+                                labelId="demo-customized-select-label"
+                                id="demo-customized-select"
+                                value={selectedCountry}
+                                onChange={handleCountry}
+                                input={<BootstrapInput />}
+                            >
+                                {
+                                    loading ? (<MenuItem disabled="true"></MenuItem>) : countries?.map((country, i) => <MenuItem key={i} value={country}>{country}</MenuItem>)
+                                }
+                            </Select>
                         </SettingHolder>
                         <div style={{ borderBottom:"1px solid #000", padding:"2em 0 1em 0", alignItems:"center", display:"flex", justifyContent:"space-between", width:"100%" }}>
                             <p>
