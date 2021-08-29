@@ -15,36 +15,22 @@ const Chart = () => {
         const formatedDate3 = currentDate(date)
         date.setDate(date.getDate() - 7)
         const formatedDate4 = currentDate(date)
+        const selectedCountry = localStorage.getItem('country') === null ? 'Nepal' : localStorage.getItem('country')
+        
+        const URL = `https://covid-193.p.rapidapi.com/history?country=${selectedCountry}&day=`
+        const options = {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
+                "x-rapidapi-host": "covid-193.p.rapidapi.com"
+            }
+        }
 
         Promise.all([
-            fetch(`https://covid-193.p.rapidapi.com/history?country=Nepal&day=${formatedDate1}`, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
-                    "x-rapidapi-host": "covid-193.p.rapidapi.com"
-                }
-            }),
-            fetch(`https://covid-193.p.rapidapi.com/history?country=Nepal&day=${formatedDate2}`, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
-                    "x-rapidapi-host": "covid-193.p.rapidapi.com"
-                }
-            }),
-            fetch(`https://covid-193.p.rapidapi.com/history?country=Nepal&day=${formatedDate3}`, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
-                    "x-rapidapi-host": "covid-193.p.rapidapi.com"
-                }
-            }),
-            fetch(`https://covid-193.p.rapidapi.com/history?country=Nepal&day=${formatedDate4}`, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
-                    "x-rapidapi-host": "covid-193.p.rapidapi.com"
-                }
-            }),
+            fetch(`${URL}${formatedDate1}`, options),
+            fetch(`${URL}${formatedDate2}`, options),
+            fetch(`${URL}${formatedDate3}`, options),
+            fetch(`${URL}${formatedDate4}`, options),
         ]).then(responses => {
             return ({
                 dataSet1: responses[0].json().then(res => res.response),
@@ -53,27 +39,37 @@ const Chart = () => {
                 dataSet4: responses[3].json().then(res => res.response),
             })
         }).then(datas => {
-            datas.dataSet4.then(data => setData(prevData => [...prevData, {
-                name: data[0].day.slice(5),
-                newCases: data[0].cases.new,
-                newDeaths: data[0].deaths.new,
-            }]))
-            datas.dataSet3.then(data => setData(prevData => [...prevData, {
-                name: data[0].day.slice(5),
-                newCases: data[0].cases.new,
-                newDeaths: data[0].deaths.new,
-            }]))
-            datas.dataSet2.then(data => setData(prevData => [...prevData, {
-                name: data[0].day.slice(5),
-                newCases: data[0].cases.new,
-                newDeaths: data[0].deaths.new,
-            }]))
-            datas.dataSet1.then(data => setData(prevData => [...prevData, {
-                name: data[0].day.slice(5),
-                newCases: data[0].cases.new,
-                newDeaths: data[0].deaths.new,
-            }]))
+            datas.dataSet1.then(data => {
+                setData(prevData => [...prevData, {
+                    name: data[0]?.day.slice(5),
+                    newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
+                    newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
+                }])
+            })
+            datas.dataSet2.then(data => {
+                setData(prevData => [...prevData, {
+                    name: data[0]?.day.slice(5),
+                    newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
+                    newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
+                }])
+            })
+            datas.dataSet3.then(data => {
+                setData(prevData => [...prevData, {
+                    name: data[0]?.day.slice(5),
+                    newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
+                    newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
+                }])
+            })
+            datas.dataSet4.then(data => {
+                setData(prevData => [...prevData, {
+                    name: data[0]?.day.slice(5),
+                    newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
+                    newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
+                }])
+            })
         })
+
+        return () => setData([])
     }, [])
 
     return (
