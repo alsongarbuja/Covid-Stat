@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import { Grid, Select, MenuItem, InputBase, withStyles } from '@material-ui/core'
 import { EcoTwoTone, NightsStayOutlined, WbSunnyOutlined } from '@material-ui/icons'
 
 import { langs } from '../../../data/lang'
-import { useFetch } from '../../../custom-hooks/UseFetch'
+import { countries } from '../../../data/country'
+
 import { SettingWrapper, SettingHolder, SettingTitle, SettingSubHeader } from './Settings.style'
 
 const Settings = ({ 
@@ -15,14 +16,6 @@ const Settings = ({
     selectedCountry, 
     setSelectedCountry
 }) => {
-
-    const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/countries', "covid-193.p.rapidapi.com")
-
-    const [countries, setCountries] = useState([])
-
-    useEffect(() => {
-        setCountries(responses.response)
-    }, [responses])
     
     const BootstrapInput = withStyles((theme) => ({
         input: {
@@ -95,13 +88,12 @@ const Settings = ({
                             </p>
                             <Select
                                 labelId="demo-customized-select-label"
-                                id="demo-customized-select"
                                 value={selectedCountry}
                                 onChange={handleCountry}
                                 input={<BootstrapInput />}
                             >
                                 {
-                                    loading ? (<MenuItem disabled="true"></MenuItem>) : countries?.map((country, i) => <MenuItem key={i} value={country}>{country}</MenuItem>)
+                                    countries.map((country, i) => <MenuItem key={i} value={country.name} >{country.name}</MenuItem>)
                                 }
                             </Select>
                         </SettingHolder>
