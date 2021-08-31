@@ -83,7 +83,7 @@ function App() {
                 language={language} 
                 setLanguage={setLanguage} 
                 selectedCountry={selectedCountry}
-                setSelectedCountry={setSearchedCountry}
+                setSelectedCountry={setSelectedCountry}
               />
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
