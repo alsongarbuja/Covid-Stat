@@ -120,6 +120,7 @@ const Settings = ({
                     <EcoTwoTone style={{ fontSize:"5rem" }}/>
                     <h2>Covid-19 Stat</h2>
                     <p>For Queries: covid19@support.com</p>
+                    <p>Github Repo: <a href="https://github.com/Alson33/Covid-Stat" rel="noreferrer" target="_blank" style={{ color:"rgba(230, 96, 14, 0.8)"}}>Covid-Stat</a></p>
                 </Grid>
             </Grid>
         </div>
