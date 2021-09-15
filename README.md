@@ -1,5 +1,6 @@
+<br /><br />
 <p align="center">
-  <img src="https://github.com/Alson33/Covid-Stat/blob/master/public/assets/co-icon-big.png" width="200" alt="logo" />
+  <img src="https://github.com/Alson33/Covid-Stat/blob/master/public/assets/co-icon-big.png" width="400" alt="logo" />
 </p>
 
 <p align="center">
