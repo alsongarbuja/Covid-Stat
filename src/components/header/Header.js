@@ -1,6 +1,6 @@
 import 'date-fns'
 import React, { useState, useRef }  from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Button, IconButton, TextField, useMediaQuery, createTheme, ThemeProvider } from '@material-ui/core'
 // eslint-disable-next-line
@@ -37,7 +37,7 @@ const Header = ({ setSearchedCountry, isDarkMode }) => {
     return (
         <StyledHeader isDarkMode={isDarkMode}>
             <Link to="/" component={Logo}>Stats Around World</Link>
-            <Switch>
+            <Routes>
                 <Route exact path="/stats">
                     <StyledForm isDarkMode={isDarkMode} ref={searchForm} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
                         <ThemeProvider theme={darkTheme}>
@@ -83,7 +83,7 @@ const Header = ({ setSearchedCountry, isDarkMode }) => {
                         )
                     }
                 </Route>
-            </Switch>
+            </Routes>
         </StyledHeader>
     )
 }

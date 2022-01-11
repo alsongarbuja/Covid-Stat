@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useFetch } from '../../../../custom-hooks/UseFetch'
 import currentDate from '../../../../helper/Date'
 
-import { useParams } from 'react-router'
-import { useHistory } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { Button, CircularProgress } from '@material-ui/core'
 import ArrowBackIosTwoTone from '@material-ui/icons/ArrowBackIosTwoTone'
@@ -12,7 +11,7 @@ import { StyledMain, InfoHolder, NewHolder, NewNumber, OuterCase, TotalHolder, P
 const Details = () => {
     const formatedDate = currentDate(new Date())
     const { country } = useParams()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const { loading, responses } = useFetch(`https://covid-193.p.rapidapi.com/history?country=${country}&day=${formatedDate}`, "covid-193.p.rapidapi.com")
     const [data, setData] = useState([])
@@ -58,7 +57,7 @@ const Details = () => {
                             ) : <h2 style={{ textAlign:"center" }}>No Available Data for Today</h2>
                         }
                         <div style={{ textAlign:"right" }}>
-                            <Button size="large" onClick={() => history.goBack()}>
+                            <Button size="large" onClick={() => navigate(-1)}>
                                 <ArrowBackIosTwoTone />
                                 Back
                             </Button>

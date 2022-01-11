@@ -2,7 +2,7 @@ import './App.css';
 import { Container } from '@material-ui/core';
 import Header from './components/header/Header';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Dashboard, Stats, Info, Settings, Details, Myths } from './components/body';
 import Sidebar from './components/sidebar/Sidebar';
@@ -40,7 +40,7 @@ function App() {
     <Router>
       <MainBodyDiv isDarkMode={isDarkMode}> 
         <Sidebar isDarkMode={isDarkMode}/>
-        <Switch>
+        <Routes>
           <Route exact path="/">
             <Wrapper>
               <Dashboard 
@@ -88,7 +88,7 @@ function App() {
               {isMobile ? <Toolbar /> : <></>}
             </Wrapper>
           </Route>
-        </Switch>
+        </Routes>
       </MainBodyDiv>
     </Router>
   );
