@@ -5,6 +5,17 @@
   font-family: 'Poppins', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2A386D;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.774);
+}
+
 .flex {
   display: flex;
   justify-content: space-around;
