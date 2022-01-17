@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom'
 import News from './News/News'
 import Chart from './Report/Report'
 
-import { useFetch } from '../../../custom-hooks/UseFetch'
+import { useFetch } from '../../custom-hooks/UseFetch'
 
-const Dashbord = ({ isMobile, isDarkMode, language }) => {
+const Dashboard = ({ isMobile, isDarkMode, language }) => {
     const selectedCountry = localStorage.getItem('country') === null ? 'Nepal' : localStorage.getItem('country')
     const URL = `https://covid-193.p.rapidapi.com/statistics?country=${selectedCountry}`
     
@@ -69,4 +69,4 @@ const Dashbord = ({ isMobile, isDarkMode, language }) => {
     )
 }
 
-export default Dashbord
+export default Dashboard
