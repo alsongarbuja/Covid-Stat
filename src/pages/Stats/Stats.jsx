@@ -2,9 +2,10 @@ import React, { useState, useEffect, createRef } from 'react'
 import Country from './Country'
 import { CountryLoader } from './Stats.style'
 
-import { useFetch } from '../../../custom-hooks/UseFetch'
+import { useFetch } from '../../custom-hooks/UseFetch'
+import Header from '../../components/header/Header'
 
-const Stats = ({ searchedCountry, isDarkMode }) => {
+const Stats = ({ searchedCountry, isDarkMode, setSearchedCountry }) => {
     const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/statistics', "covid-193.p.rapidapi.com")
 
     const [data, setData] = useState([])
@@ -22,7 +23,8 @@ const Stats = ({ searchedCountry, isDarkMode }) => {
     }, [data])
 
     return (
-        <>
+        <div>
+            <Header isDarkMode={isDarkMode} setSearchedCountry={setSearchedCountry} />
             <div style={{ height:"120px" }} />
             {
                 loading ? (
@@ -47,7 +49,7 @@ const Stats = ({ searchedCountry, isDarkMode }) => {
                     </div>
                 )
             }
-        </>
+        </div>
     )
 }
 

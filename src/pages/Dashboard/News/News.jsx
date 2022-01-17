@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
-import { useFetch } from '../../../../custom-hooks/UseFetch'
+import { useFetch } from '../../../custom-hooks/UseFetch'
  
 const News = ({ isDarkMode, language }) => {
     const { loading, responses } = useFetch(`https://free-news.p.rapidapi.com/v1/search?q=covid&lang=${language}&page_size=3`, "free-news.p.rapidapi.com")
@@ -18,7 +18,7 @@ const News = ({ isDarkMode, language }) => {
                 loading ? (
                     <div style={{ width:"100%", padding:"1em 0", height:"300px", textAlign:"center" }}>
                         {
-                            [...Array(3)].map((_, i) => (<><NewsHolderLoading key={i} /><br /></>))
+                            [...Array(3)].map((_, i) => (<div key={i}><NewsHolderLoading /><br /></div>))
                         }
                     </div>
                 ) : news?.map((news, i) => (

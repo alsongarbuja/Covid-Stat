@@ -15,9 +15,11 @@ const Info = () => {
 
     return (
         <div style={{ padding:"1.5em 2em" }}>
-            <Link to="/" component={LinkBack}>
-                <ArrowBack />
-                Back To DashBoard
+            <Link to="/">
+                <LinkBack>
+                    <ArrowBack />
+                    Back To DashBoard
+                </LinkBack>
             </Link>
             <h1>Symptoms</h1>
             <InfoMainWrapper>

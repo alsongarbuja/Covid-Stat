@@ -3,8 +3,8 @@ import React from 'react'
 import { Grid, Select, MenuItem, InputBase, withStyles } from '@material-ui/core'
 import { EcoTwoTone, NightsStayOutlined, WbSunnyOutlined } from '@material-ui/icons'
 
-import { langs } from '../../../data/lang'
-import { countries } from '../../../data/country'
+import { langs } from '../../data/lang'
+import { countries } from '../../data/country'
 
 import { SettingWrapper, SettingHolder, SettingTitle, SettingSubHeader } from './Settings.style'
 

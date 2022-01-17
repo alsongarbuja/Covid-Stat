@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import currentDate from '../../../../helper/Date';
+import currentDate from '../../../helper/Date';
 
 const Chart = () => {
 

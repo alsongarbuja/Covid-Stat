@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { useFetch } from '../../../../custom-hooks/UseFetch'
-import currentDate from '../../../../helper/Date'
+import { useFetch } from '../../../custom-hooks/UseFetch'
+import currentDate from '../../../helper/Date'
 
 import { useParams, useNavigate } from 'react-router-dom'
 
