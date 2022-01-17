@@ -20,7 +20,7 @@ export const Nav = styled.nav`
     }
 `
 
-export const Menus = styled.a`
+export const Menus = styled.span`
     display: flex;
     flex-direction: column;
     align-items: center;
