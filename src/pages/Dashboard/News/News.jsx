@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
 import { useFetch } from '../../../custom-hooks/UseFetch'
  
-const News = ({ isDarkMode, language }) => {
-    const { loading, responses } = useFetch(`https://free-news.p.rapidapi.com/v1/search?q=covid&lang=${language}&page_size=3`, "free-news.p.rapidapi.com")
+const News = ({ isDarkMode }) => {
+    const { loading, responses } = useFetch(`https://covid-news5.p.rapidapi.com/news?limit=3`, "covid-news5.p.rapidapi.com")
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
-        setNews(responses.articles)
+        setNews(responses.data.articles)
     }, [responses])
 
     return (
@@ -31,7 +31,7 @@ const News = ({ isDarkMode, language }) => {
                             WebkitBoxOrient: "vertical",
                             }}
                         >
-                            <a href={news.link} rel="noreferrer" target="_blank" style={{ color: isDarkMode ? "#e2e2e2" : "#000", }}>{news.title}</a>
+                            <a href={news.url} rel="noreferrer" target="_blank" style={{ color: isDarkMode ? "#e2e2e2" : "#000", }}>{news.title}</a>
                         </h4>
                         <p style={{ 
                             overflow: "hidden", 
@@ -39,7 +39,9 @@ const News = ({ isDarkMode, language }) => {
                             display: "-webkit-box",
                             WebkitLineClamp: "2",
                             WebkitBoxOrient: "vertical", 
-                            }}>{news.summary || <a href={news.link} rel="noreferrer" target="_blank">Video Source</a>}</p>
+                        }}>
+                            <a href={news.url} rel="noreferrer" target="_blank">{news.source}</a>
+                        </p>
                     </NewsHolder>
                 ))
             }
