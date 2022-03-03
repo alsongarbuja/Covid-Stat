@@ -3,16 +3,14 @@ import React from 'react'
 import { Grid, Select, MenuItem, InputBase, withStyles } from '@material-ui/core'
 import { EcoTwoTone, NightsStayOutlined, WbSunnyOutlined } from '@material-ui/icons'
 
-import { langs } from '../../data/lang'
+// import { langs } from '../../data/lang'
 import { countries } from '../../data/country'
 
 import { SettingWrapper, SettingHolder, SettingTitle, SettingSubHeader } from './Settings.style'
 
 const Settings = ({ 
     isDarkMode, 
-    setDarkMode, 
-    language, 
-    setLanguage, 
+    setDarkMode,
     selectedCountry, 
     setSelectedCountry
 }) => {
@@ -51,10 +49,10 @@ const Settings = ({
         localStorage.setItem('darkModeOn', !isDarkMode)
         setDarkMode(!isDarkMode)
     }
-    const handleLanguage = e => {
-        localStorage.setItem('language', e.target.value)
-        setLanguage(e.target.value)
-    }
+    // const handleLanguage = e => {
+    //     localStorage.setItem('language', e.target.value)
+    //     setLanguage(e.target.value)
+    // }
     const handleCountry = e => {
         localStorage.setItem('country', e.target.value)
         setSelectedCountry(e.target.value)
@@ -97,7 +95,7 @@ const Settings = ({
                                 }
                             </Select>
                         </SettingHolder>
-                        <div style={{ borderBottom:"1px solid #000", padding:"2em 0 1em 0", alignItems:"center", display:"flex", justifyContent:"space-between", width:"100%" }}>
+                        {/* <div style={{ borderBottom:"1px solid #000", padding:"2em 0 1em 0", alignItems:"center", display:"flex", justifyContent:"space-between", width:"100%" }}>
                             <p>
                                 <b>News Language</b><br />
                                 <SettingSubHeader isDarkMode={isDarkMode}>Get the news in your prefered language</SettingSubHeader>
@@ -113,7 +111,7 @@ const Settings = ({
                                     langs.map((lang, i) => <MenuItem key={i} value={lang.value} >{lang.name}</MenuItem>)
                                 }
                             </Select>
-                        </div>
+                        </div> */}
                     </SettingWrapper>
                 </Grid>
                 <Grid item xl={6} md={6} xs={12} style={{ textAlign:"center" }}>
