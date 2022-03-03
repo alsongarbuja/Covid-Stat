@@ -7,7 +7,8 @@ const News = ({ isDarkMode }) => {
     const [ news, setNews ] = useState([])
 
     useEffect(() => {
-        setNews(responses.data.articles)
+        if(responses.status&&responses.status==='success')
+            setNews(responses?.data?.articles)
     }, [responses])
 
     return (
