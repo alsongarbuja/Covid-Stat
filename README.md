@@ -40,7 +40,7 @@ Covid19Stat is full of features useful for having the leastest and most importan
 
 1. __Latest Stats__: Using the [coivd19 rapid api](https://rapidapi.com/api-sports/api/covid-193/) you get the latest and upto date stats from any country
 2. __Weekly Report__: A Weekly breakdown of the month that updates daliy to compare the covid flow rate
-3. __News__: Get latest news from the [rapid api news](https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/free-news/) related to covid in more than 20 languages
+3. __News__: Get latest news from the [rapid api news](https://rapidapi.com/magar33alson/api/covid-news5) related to covid 19 from different sources like [the guardian](https://www.theguardian.com/), [WHO](https://www.who.int/), etc
 4. __Dark Mode and Mobile Responsive__: With the darkMode and mobile responsive design you can check the website from any device with ease
 5. __PWA__: With [PWA](https://web.dev/progressive-web-apps/) enabled you can install the website as a native app in your device and find it quickly next time 
 <br /><br />
