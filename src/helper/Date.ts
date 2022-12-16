@@ -1,11 +1,11 @@
 
-const currentDate = date => {
-    let month = date.getMonth();
+const currentDate = (date: Date) => {
+    let month: number|string = date.getMonth();
     let year = date.getFullYear();
-    let day = date.getDate();
+    let day: number|string = date.getDate();
 
     if(month < 10){
-        month = 0+month.toString()
+        month = 0+month.toString();
     }
 
     if(day < 10){

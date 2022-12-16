@@ -13,6 +13,11 @@ const Settings = ({
     setDarkMode,
     selectedCountry, 
     setSelectedCountry
+}: {
+    isDarkMode: boolean,
+    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>,
+    selectedCountry: string | null,
+    setSelectedCountry: React.Dispatch<React.SetStateAction<string>>
 }) => {
     
     const BootstrapInput = withStyles((theme) => ({
@@ -46,16 +51,19 @@ const Settings = ({
       }))(InputBase);
 
     const darkMode = () => {
-        localStorage.setItem('darkModeOn', !isDarkMode)
+        localStorage.setItem('darkModeOn', !isDarkMode ? 'true' : 'false')
         setDarkMode(!isDarkMode)
     }
     // const handleLanguage = e => {
     //     localStorage.setItem('language', e.target.value)
     //     setLanguage(e.target.value)
     // }
-    const handleCountry = e => {
-        localStorage.setItem('country', e.target.value)
-        setSelectedCountry(e.target.value)
+    const handleCountry = (e: React.ChangeEvent<{
+        name?: string | undefined;
+        value: unknown;
+    }>) => {
+        localStorage.setItem('country', e.target.value as string)
+        setSelectedCountry(e.target.value as string)
     }
 
     return (
@@ -117,7 +125,7 @@ const Settings = ({
                 <Grid item xl={6} md={6} xs={12} style={{ textAlign:"center" }}>
                     <EcoTwoTone style={{ fontSize:"5rem" }}/>
                     <h2>Covid-19 Stat</h2>
-                    <p>For Queries: covid19@support.com</p>
+                    <p>For Queries: <a href='mailto:nicemeetingyoou@gmail.com'>nicemeetingyoou@gmail.com</a></p>
                     <p>Github Repo: <a href="https://github.com/Alson33/Covid-Stat" rel="noreferrer" target="_blank" style={{ color:"rgba(230, 96, 14, 0.8)"}}>Covid-Stat</a></p>
                 </Grid>
             </Grid>

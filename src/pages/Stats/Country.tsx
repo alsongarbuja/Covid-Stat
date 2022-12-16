@@ -8,7 +8,18 @@ import { FavoriteRounded, SentimentDissatisfiedRounded, ShowChartRounded } from 
 
 import { CountryDiv, CountryName, StatDiv } from './Stats.style'
 
-const Country = ({ country, selected, refProp, isDarkMode }) => {
+export type CountryType = {
+    country: string,
+    cases: {
+        new: string,
+        recovered: string,
+    },
+    deaths: {
+        new: string,
+    },
+}
+
+const Country = ({ country, selected, refProp, isDarkMode }: { country: CountryType, selected: boolean, refProp: any, isDarkMode: boolean }) => {
     
     if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "center" })
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useMediaQuery } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ const AppRoutes = () => {
 
     const [isDarkMode, setIsDarkMode] = useState(false)
     const [searchedCountry, setSearchedCountry] = useState('')
-    const [language, setLanguage] = useState('en')
+    const [language, setLanguage] = useState<null|string>('en')
     const [selectedCountry, setSelectedCountry] = useState('')
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const AppRoutes = () => {
         const selectCountry = localStorage.getItem('country')
         setIsDarkMode(darkMode)
         setLanguage(lang)
-        setSelectedCountry(selectCountry)
+        setSelectedCountry(selectCountry??'Nepal')
       }, [])
 
     return (
@@ -39,9 +39,9 @@ const AppRoutes = () => {
                 <Route 
                     path="/" 
                     element={<Dashboard 
-                                isDarkMode={isDarkMode} 
-                                language={language}
+                                isDarkMode={isDarkMode}
                                 isMobile={isMobile}
+                                language={language}
                             />} 
                 />
                 <Route 
@@ -56,8 +56,6 @@ const AppRoutes = () => {
                     element={<Settings 
                                 isDarkMode={isDarkMode} 
                                 setDarkMode={setIsDarkMode} 
-                                language={language} 
-                                setLanguage={setLanguage} 
                                 selectedCountry={selectedCountry}
                                 setSelectedCountry={setSelectedCountry}
                             />} 
@@ -67,7 +65,7 @@ const AppRoutes = () => {
     )
 }
 
-const Layout = ({ children, isDarkMode, isMobile }) => {
+const Layout = ({ children, isDarkMode, isMobile }: { children: React.ReactNode, isDarkMode: boolean, isMobile: boolean }) => {
     return (
         <MainBodyDiv isDarkMode={isDarkMode}>
             <Sidebar isDarkMode={isDarkMode} />

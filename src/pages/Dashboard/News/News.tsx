@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { NewsDiv, NewsHolder, NewsHolderLoading } from './News.styled'
-import { useFetch } from '../../../custom-hooks/UseFetch'
+import { dynamicObject, useFetch } from '../../../custom-hooks/UseFetch'
  
-const News = ({ isDarkMode }) => {
+const News = ({ isDarkMode }: { isDarkMode: boolean }) => {
     const { loading, responses } = useFetch(`https://covid-news5.p.rapidapi.com/news?limit=3`, "covid-news5.p.rapidapi.com")
     const [ news, setNews ] = useState([])
 
@@ -22,7 +22,7 @@ const News = ({ isDarkMode }) => {
                             [...Array(3)].map((_, i) => (<div key={i}><NewsHolderLoading /><br /></div>))
                         }
                     </div>
-                ) : news?.map((news, i) => (
+                ) : news?.map((news: dynamicObject, i) => (
                     <NewsHolder key={i}>
                         <h4 style={{ 
                             overflow: "hidden", 

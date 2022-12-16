@@ -1,11 +1,11 @@
 import React, { useState, useEffect, createRef } from 'react'
-import Country from './Country'
+import Country, { CountryType } from './Country'
 import { CountryLoader } from './Stats.style'
 
 import { useFetch } from '../../custom-hooks/UseFetch'
 import Header from '../../components/header/Header'
 
-const Stats = ({ searchedCountry, isDarkMode, setSearchedCountry }) => {
+const Stats = ({ searchedCountry, isDarkMode, setSearchedCountry }: { isDarkMode: boolean, searchedCountry: string, setSearchedCountry: React.Dispatch<React.SetStateAction<string>> }) => {
     const { loading, responses } = useFetch('https://covid-193.p.rapidapi.com/statistics', "covid-193.p.rapidapi.com")
 
     const [data, setData] = useState([])
@@ -16,7 +16,7 @@ const Stats = ({ searchedCountry, isDarkMode, setSearchedCountry }) => {
       }, [responses])
 
     useEffect(() => {
-        const refs = Array(data?.length).fill().map((_, i) => elRefs[i] || createRef())
+        const refs = Array(data?.length).fill(0).map((_, i) => elRefs[i] || createRef())
 
         setElRefs(refs)
     // eslint-disable-next-line
@@ -36,7 +36,7 @@ const Stats = ({ searchedCountry, isDarkMode, setSearchedCountry }) => {
                 ) : (
                     <div className="flex">
                         {
-                            data?.map((country, i) => (
+                            data?.map((country: CountryType, i) => (
                                 <Country 
                                     key={i}
                                     country={country}

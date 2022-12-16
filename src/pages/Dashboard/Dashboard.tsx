@@ -9,15 +9,15 @@ import { Link } from 'react-router-dom'
 import News from './News/News'
 import Chart from './Report/Report'
 
-import { useFetch } from '../../custom-hooks/UseFetch'
+import { dynamicObject, useFetch } from '../../custom-hooks/UseFetch'
 
-const Dashboard = ({ isMobile, isDarkMode, language }) => {
+const Dashboard = ({ isMobile, isDarkMode, language }: { isMobile: boolean, isDarkMode: boolean, language: string | null }) => {
     const selectedCountry = localStorage.getItem('country') === null ? 'Nepal' : localStorage.getItem('country')
     const URL = `https://covid-193.p.rapidapi.com/statistics?country=${selectedCountry}`
     
     const { loading, responses } = useFetch(URL, "covid-193.p.rapidapi.com")
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState<dynamicObject>([])
 
     useEffect(() => {
         setData(responses.response)
@@ -53,7 +53,7 @@ const Dashboard = ({ isMobile, isDarkMode, language }) => {
                 </div>
             </Grid>
             <Grid item xl={6} md={3} xs={12} style={{ padding: isMobile ? "1em" : "4em 2em 0 0" }}>
-                <News isDarkMode={isDarkMode} language={language}/>
+                <News isDarkMode={isDarkMode} />
                 <SymptomDiv isDarkMode={isDarkMode}>
                     <ScatterPlot style={{ fontSize:"5rem" }}/>
                     <h3>Infos</h3>

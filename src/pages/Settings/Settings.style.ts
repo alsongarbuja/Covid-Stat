@@ -6,7 +6,7 @@ export const SettingTitle = styled.h3`
 `
 
 export const SettingSubHeader = styled.span`
-    color: ${props => props.isDarkMode ? "rgba(250,250,250,.5)" : "rgba(0,0,0,.7)"};
+    color: ${(props: { isDarkMode: boolean }) => props.isDarkMode ? "rgba(250,250,250,.5)" : "rgba(0,0,0,.7)"};
 `
 
 export const SettingWrapper = styled.div`

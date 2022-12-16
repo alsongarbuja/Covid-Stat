@@ -1,9 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { MythDiv, MythLoader } from './Myths.style'
 
-const Myths = ({ isDarkMode }) => {
+type MythObject = {
+    data: {
+        myth: string,
+        reality: string,
+    }[],
+}
+
+const Myths = ({ isDarkMode }: { isDarkMode: boolean }) => {
     const [loading, setLoading] = useState(true)
-    const [myths, setMyths] = useState([])
+    const [myths, setMyths] = useState<MythObject>({ data: [] })
 
     const getData = useCallback(
         async () => {
