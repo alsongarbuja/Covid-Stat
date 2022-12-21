@@ -6,16 +6,16 @@ import SearchTwoTone from '@material-ui/icons/SearchTwoTone'
 import { Close } from '@material-ui/icons'
 import { Logo, StyledHeader, StyledForm } from './Header.style'
 
-const Header = ({ setSearchedCountry, isDarkMode }) => {
+const Header = ({ setSearchedCountry, isDarkMode }: { setSearchedCountry: React.Dispatch<React.SetStateAction<string>>, isDarkMode: boolean }) => {
     const [country, setCountry] = useState('')
     const isDesktop = useMediaQuery('(min-width: 570px)')
-    const searchForm = useRef()
+    const searchForm = useRef<HTMLDivElement>()
 
-    const handleSearch = e => {
+    const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         setSearchedCountry(country)
         setCountry('')
-        if(!isDesktop){
+        if(!isDesktop && searchForm.current){
             searchForm.current.style.display = "none"
         }
     }
@@ -31,8 +31,11 @@ const Header = ({ setSearchedCountry, isDarkMode }) => {
 
     return (
         <StyledHeader isDarkMode={isDarkMode}>
-            <Link to="/" component={Logo}>Stats Around World</Link>
-                <StyledForm isDarkMode={isDarkMode} ref={searchForm} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
+            <Link to="/" >Stats Around World</Link>
+                {/* <div ref={searchForm}>
+
+                </div> */}
+                <StyledForm isDarkMode={isDarkMode} onSubmit={handleSearch} style={{ display: isDesktop ? "block" : "none" }}>
                     <ThemeProvider theme={darkTheme}>
                         <TextField 
                             label="Search Country" 
@@ -57,7 +60,7 @@ const Header = ({ setSearchedCountry, isDarkMode }) => {
                                 color="secondary"
                                 size="medium"
                                 style={{ marginLeft:".5em" }}
-                                onClick={() => searchForm.current.style.display = "none"}
+                                onClick={() => { if(searchForm.current) searchForm.current.style.display="none" }}
                             >
                                 <Close />
                             </IconButton>
@@ -69,7 +72,7 @@ const Header = ({ setSearchedCountry, isDarkMode }) => {
                         <IconButton 
                             color="primary"
                             size="medium"
-                            onClick={() => searchForm.current.style.display="block"}
+                            onClick={() => { if(searchForm.current) searchForm.current.style.display="block" }}
                         >
                             <SearchTwoTone />
                         </IconButton>

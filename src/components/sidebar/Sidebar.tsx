@@ -1,9 +1,8 @@
 import { Dashboard, ShowChart, Settings, ThumbDownAlt, EcoTwoTone } from '@material-ui/icons'
-import React from 'react'
 import { Nav, Menus, Logo } from './Sidebar.style'
 import { NavLink, useLocation } from 'react-router-dom'
 
-const Sidebar = ({ isDarkMode }) => {
+const Sidebar = ({ isDarkMode }: { isDarkMode: boolean }) => {
     const { pathname } = useLocation()
 
     return (

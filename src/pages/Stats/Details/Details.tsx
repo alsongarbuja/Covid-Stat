@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useFetch } from '../../../custom-hooks/UseFetch'
+import { dynamicObject, useFetch } from '../../../custom-hooks/UseFetch'
 import currentDate from '../../../helper/Date'
 
 import { useParams, useNavigate } from 'react-router-dom'
@@ -14,7 +14,7 @@ const Details = () => {
     const navigate = useNavigate()
 
     const { loading, responses } = useFetch(`https://covid-193.p.rapidapi.com/history?country=${country}&day=${formatedDate}`, "covid-193.p.rapidapi.com")
-    const [data, setData] = useState([])
+    const [data, setData] = useState<dynamicObject>([])
 
     useEffect(() => {
         setData(responses.response)

@@ -7,7 +7,7 @@ export const Nav = styled.nav`
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: ${props => props.isDarkMode ? "#1b2444" : "#2A386D"};
+    background-color: ${(props: { isDarkMode: boolean }) => props.isDarkMode ? "#1b2444" : "#2A386D"};
     color: #AAC5E1;
     z-index: 2;
 

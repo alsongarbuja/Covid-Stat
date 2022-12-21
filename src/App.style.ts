@@ -20,6 +20,6 @@ export const MainBodyDiv = styled.div`
     display: flex; 
     height: 100%; 
     width: 100%; 
-    background-color: ${props => props.isDarkMode ? "#252525" : "#F1F3FB"};
-    color: ${props => props.isDarkMode ? "#e2e2e2" : "#000"};
+    background-color: ${(props: { isDarkMode: boolean }) => props.isDarkMode ? "#252525" : "#F1F3FB"};
+    color: ${(props: { isDarkMode: boolean }) => props.isDarkMode ? "#e2e2e2" : "#000"};
 `

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { dynamicObject } from '../../../custom-hooks/UseFetch';
 import currentDate from '../../../helper/Date';
 
 const Chart = () => {
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState<dynamicObject[]>([])
 
     useEffect(() => {
         let date = new Date()
@@ -18,10 +19,10 @@ const Chart = () => {
         const selectedCountry = localStorage.getItem('country') === null ? 'Nepal' : localStorage.getItem('country')
         
         const URL = `https://covid-193.p.rapidapi.com/history?country=${selectedCountry}&day=`
-        const options = {
+        const options: RequestInit = {
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY,
+                "x-rapidapi-key": process.env.REACT_APP_RAPID_API_COVID_KEY!,
                 "x-rapidapi-host": "covid-193.p.rapidapi.com"
             }
         }
@@ -40,28 +41,28 @@ const Chart = () => {
             })
         }).then(datas => {
             datas.dataSet1.then(data => {
-                setData(prevData => [...prevData, {
+                setData((prevData: dynamicObject[]) => [...prevData, {
                     name: data[0]?.day.slice(5),
                     newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
                     newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
                 }])
             })
             datas.dataSet2.then(data => {
-                setData(prevData => [...prevData, {
+                setData((prevData: dynamicObject[]) => [...prevData, {
                     name: data[0]?.day.slice(5),
                     newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
                     newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
                 }])
             })
             datas.dataSet3.then(data => {
-                setData(prevData => [...prevData, {
+                setData((prevData: dynamicObject[]) => [...prevData, {
                     name: data[0]?.day.slice(5),
                     newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
                     newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
                 }])
             })
             datas.dataSet4.then(data => {
-                setData(prevData => [...prevData, {
+                setData((prevData: dynamicObject[]) => [...prevData, {
                     name: data[0]?.day.slice(5),
                     newCases: data[0]?.cases.new === null ? 0 : parseInt(data[0]?.cases.new),
                     newDeaths: data[0]?.deaths.new === null ? 0 : parseInt(data[0]?.deaths.new),
